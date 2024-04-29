@@ -1,3 +1,5 @@
 Welcome to our Data Structure Project 
 
-Honkai Star rail database
+Honkai Star Rail character database
+
+Kuru - Kuru~~~
