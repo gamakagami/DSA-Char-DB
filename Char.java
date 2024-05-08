@@ -71,15 +71,13 @@ public class Main{
         System.out.println("Action:");
         System.out.println("A: Get Rarity");
         System.out.println("---------------------------------------------");
+        System.out.println("Enter the Character:");
+        String Char = scn.nextLine().trim().toUpperCase();
         System.out.println("Enter the Action:");
         String input = scn.nextLine().toUpperCase();
 
         switch (input){
             case "A":
-
-                System.out.println("Enter the Character:");
-                String Char = scn.nextLine().trim().toUpperCase();
-
                 getRarity(Char, Retrieve_Information); break;
             default:
                 System.out.println("Action Entered is Invalid"); break;
