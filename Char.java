@@ -71,16 +71,32 @@ public class Main{
         System.out.println("Action:");
         System.out.println("A: Get Rarity");
         System.out.println("---------------------------------------------");
-        System.out.println("Enter the Character:");
-        String Char = scn.nextLine().trim().toUpperCase();
-        System.out.println("Enter the Action:");
-        String input = scn.nextLine().toUpperCase();
 
-        switch (input){
-            case "A":
-                getRarity(Char, Retrieve_Information); break;
-            default:
-                System.out.println("Action Entered is Invalid"); break;
+        Boolean present = false;
+        System.out.println("Enter the Character:");
+        String Char = scn.nextLine();
+        Char = Char.replace(" ", "").toUpperCase();
+
+        for (String i : Characters){
+            if (i.equals(Char)){
+                present = true;
+            }
+        }
+
+        if (present) {
+            System.out.println("Enter the Action:");
+            String input = scn.nextLine().toUpperCase();
+
+            switch (input) {
+                case "A":
+                    getRarity(Char, Retrieve_Information);
+                    break;
+                default:
+                    System.out.println("Action Entered is Invalid");
+                    break;
+            }
+        } else {
+            System.out.println("Character is invalid");
         }
     }
     static void getRarity(String Character, Hashtable<String, String[]> Information){
