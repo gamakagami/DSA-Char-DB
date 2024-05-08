@@ -1,57 +1,94 @@
 import java.util.*;
-public class Char {
-    public static void main(String[] args) {
-        Hashtable<Integer,String> table = new Hashtable<>(46);
+public class Main{
+    public static void main(String[] args){
 
-        table.put(1,"Acheron");
-        table.put(2,"Argenti");
-        table.put(3,"Arlan");
-        table.put(4,"Asta");
-        table.put(5,"Aventurine");
-        table.put(6,"Bailu");
-        table.put(7,"Blackswan");
-        table.put(8,"Blade");
-        table.put(9,"Bronya");
-        table.put(10,"Clara");
-        table.put(11,"Dan heng");
-        table.put(12,"Dr.Ratio");
-        table.put(13,"Fu xuan");
-        table.put(14,"Gallagher");
-        table.put(15,"Gepard");
-        table.put(16,"Guinaifen");
-        table.put(17,"Hanya");
-        table.put(18,"Herta");
-        table.put(19,"Himeko");
-        table.put(20,"Hook");
-        table.put(21,"HuoHuo");
-        table.put(22,"Jing liu");
-        table.put(23,"Jing yuan");
-        table.put(24,"Kafka");
-        table.put(25,"Luka");
-        table.put(26,"Luocha");
-        table.put(27,"Lynx");
-        table.put(28,"March 7th");
-        table.put(29,"Misha");
-        table.put(30,"Natasha");
-        table.put(31,"Pela");
-        table.put(32,"Qingque");
-        table.put(33,"Ruan mei");
-        table.put(34,"Sampo");
-        table.put(35,"Seele");
-        table.put(36,"Serval");
-        table.put(37,"Silver wolf");
-        table.put(38,"Sparkle");
-        table.put(39,"Sushang");
-        table.put(40,"Tingyun");
-        table.put(41,"Topaz and numby");
-        table.put(42,"Trailblazer");
-        table.put(43,"Welt");
-        table.put(44,"Xueyi");
-        table.put(45,"Yanqing");
-        table.put(46,"Yukong");
+        String[] Characters = {"ACHERON","ARGENTI","ARLAN","ASTA","AVENTURINE","BAILU","BLACKSWAN","BLADE","BRONYA",
+                "CLARA","DANHENG","DR.RATIO","FUXUAN","GALLAGHER","GEPARD","GUINAIFEN","HANYA","HERTA","HIMEKO",
+                "HOOK","HUOHUO","IMBIBITORLUNAE","JINGYUAN","JINGLIU","KAFKA","LUKA","LUOCHA","LYNX","MARCH7TH",
+                "MISHA","NATASHA","PELA","QINGQUE","ROBIN","RUANMEI","SAMPO","SEELE","SERVAL","SILVERWOLF","SPARKLE",
+                "SUSHANG","TINGYUN","TOPAZ","TRAILBLAZER","WELT","XUEYI","YANQING","YUKONG"};
 
-        for(int key=1;key<=46;key++){
-        System.out.println(key+"\t"+table.get(key));
+        String[][] Character_Information = {
+                {"5 Star"},
+                {"5 Star"},
+                {"4 Star"},
+                {"4 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"4 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"4 Star"},
+                {"5 Star"},
+                {"4 Star"},
+                {"4 Star"},
+                {"4 Star"},
+                {"5 Star"},
+                {"4 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"4 Star"},
+                {"5 Star"},
+                {"4 Star"},
+                {"4 Star"},
+                {"4 Star"},
+                {"4 Star"},
+                {"4 Star"},
+                {"4 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"4 Star"},
+                {"5 Star"},
+                {"4 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"4 Star"},
+                {"4 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"5 Star"},
+                {"4 Star"},
+                {"5 Star"},
+                {"4 Star"}
+        };
+
+        Hashtable<String, String[]> Retrieve_Information = new Hashtable<>(48);
+
+        for (int i = 0; i <Characters.length; i++){
+            Retrieve_Information.put(Characters[i], Character_Information[i]);
+        }
+
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Welcome to Honkai Star Rail Database System!");
+        System.out.println("---------------------------------------------");
+        System.out.println("Action:");
+        System.out.println("A: Get Rarity");
+        System.out.println("---------------------------------------------");
+        System.out.println("Enter the Action:");
+        String input = scn.nextLine().toUpperCase();
+
+        switch (input){
+            case "A":
+
+                System.out.println("Enter the Character:");
+                String Char = scn.nextLine().trim().toUpperCase();
+
+                getRarity(Char, Retrieve_Information); break;
+            default:
+                System.out.println("Action Entered is Invalid"); break;
+        }
     }
+    static void getRarity(String Character, Hashtable<String, String[]> Information){
+        String[] Info = Information.get(Character);
+        Character = Character.charAt(0) + Character.substring(1, Character.length()).toLowerCase();
+
+        System.out.println(Character + " is a " + Info[0] + " character.");
     }
 }
