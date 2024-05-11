@@ -3,8 +3,8 @@ public class Char{
     public static void main(String[] args){
 
         String[] Characters = {"ACHERON","ARGENTI","ARLAN","ASTA","AVENTURINE","BAILU","BLACKSWAN","BLADE","BRONYA",
-                "CLARA","DANHENG","DR.RATIO","FUXUAN","GALLAGHER","GEPARD","GUINAIFEN","HANYA","HERTA","HIMEKO",
-                "HOOK","HUOHUO","IMBIBITORLUNAE","JINGYUAN","JINGLIU","KAFKA","LUKA","LUOCHA","LYNX","MARCH7TH",
+                "CLARA","DANHENG","DANHENGIL","DR.RATIO","FUXUAN","GALLAGHER","GEPARD","GUINAIFEN","HANYA","HERTA","HIMEKO",
+                "HOOK","HUOHUO","JINGYUAN","JINGLIU","KAFKA","LUKA","LUOCHA","LYNX","MARCH7TH",
                 "MISHA","NATASHA","PELA","QINGQUE","ROBIN","RUANMEI","SAMPO","SEELE","SERVAL","SILVERWOLF","SPARKLE",
                 "SUSHANG","TINGYUN","TOPAZ","TRAILBLAZER","WELT","XUEYI","YANQING","YUKONG"};
 
@@ -73,6 +73,9 @@ public class Char{
         System.out.println("Enter the Character:");
         String Char = scn.nextLine();
         Char = Char.replace(" ", "").toUpperCase();
+        if (Char.equals("IMBIBITORLUNAE")){
+            Char = "DANHENGIL";
+        }
 
         for (String i : Characters){
             if (i.equals(Char)){
@@ -92,13 +95,13 @@ public class Char{
 
             switch (input) {
                 case "A":
-                    getInfo(Char, Retrieve_Information,"A");
+                    getRarity(Char, Retrieve_Information);
                     break;
                 case "B":
-                    getInfo(Char, Retrieve_Information,"B");
+                    getPath(Char, Retrieve_Information);
                     break;
                 case "C":
-                    getInfo(Char, Retrieve_Information,"C");
+                    getElement(Char, Retrieve_Information);
                     break;
                 default:
                     System.out.println("Action Entered is Invalid");
@@ -108,29 +111,25 @@ public class Char{
             System.out.println("Character is invalid");
         }
     }
-    static void getInfo(String Character, Hashtable<String, String[]> Information, String casse) {
+    static void getRarity(String Character, Hashtable<String, String[]> Information){
         String[] Info = Information.get(Character);
-        int i = 0;
         Character = Character.charAt(0) + Character.substring(1, Character.length()).toLowerCase();
-        switch (casse) {
-            case "A":
-                i = 0;
-                break;
-            case "B":
-                i = 1;
-                break;
-            case "C":
-                i = 2;
-                break;
-            default:
-                System.out.println("Invalid option");
-                return; // exit the method if the option is invalid
-        }
-        if (Info != null && i < Info.length) {
-            System.out.println(Character + " is a " + Info[i] + " character.");
-        } else {
-            System.out.println("Character information not found or index out of bounds.");
-        }
-    }
 
+        System.out.println(Character + " is a " + Info[0] + " character.");
+
+    }
+    static void getPath(String Character, Hashtable<String, String[]> Information){
+        String[] Info = Information.get(Character);
+        Character = Character.charAt(0) + Character.substring(1, Character.length()).toLowerCase();
+
+        System.out.println(Character + " is in " + Info[1] + " path.");
+
+    }
+    static void getElement(String Character, Hashtable<String, String[]> Information){
+        String[] Info = Information.get(Character);
+        Character = Character.charAt(0) + Character.substring(1, Character.length()).toLowerCase();
+
+        System.out.println(Character + " is a " + Info[2] + " character.");
+
+    }
 }
