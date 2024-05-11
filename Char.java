@@ -92,13 +92,13 @@ public class Char{
 
             switch (input) {
                 case "A":
-                    getRarity(Char, Retrieve_Information);
+                    getInfo(Char, Retrieve_Information,"A");
                     break;
                 case "B":
-                    getPath(Char, Retrieve_Information);
+                    getInfo(Char, Retrieve_Information,"B");
                     break;
                 case "C":
-                    getElement(Char, Retrieve_Information);
+                    getInfo(Char, Retrieve_Information,"C");
                     break;
                 default:
                     System.out.println("Action Entered is Invalid");
@@ -108,25 +108,29 @@ public class Char{
             System.out.println("Character is invalid");
         }
     }
-    static void getRarity(String Character, Hashtable<String, String[]> Information){
+    static void getInfo(String Character, Hashtable<String, String[]> Information, String casse) {
         String[] Info = Information.get(Character);
+        int i = 0;
         Character = Character.charAt(0) + Character.substring(1, Character.length()).toLowerCase();
-
-        System.out.println(Character + " is a " + Info[0] + " character.");
-
+        switch (casse) {
+            case "A":
+                i = 0;
+                break;
+            case "B":
+                i = 1;
+                break;
+            case "C":
+                i = 2;
+                break;
+            default:
+                System.out.println("Invalid option");
+                return; // exit the method if the option is invalid
+        }
+        if (Info != null && i < Info.length) {
+            System.out.println(Character + " is a " + Info[i] + " character.");
+        } else {
+            System.out.println("Character information not found or index out of bounds.");
+        }
     }
-    static void getPath(String Character, Hashtable<String, String[]> Information){
-        String[] Info = Information.get(Character);
-        Character = Character.charAt(0) + Character.substring(1, Character.length()).toLowerCase();
 
-        System.out.println(Character + " is in " + Info[1] + " path.");
-
-    }
-    static void getElement(String Character, Hashtable<String, String[]> Information){
-        String[] Info = Information.get(Character);
-        Character = Character.charAt(0) + Character.substring(1, Character.length()).toLowerCase();
-
-        System.out.println(Character + " is a " + Info[2] + " character.");
-
-    }
 }
