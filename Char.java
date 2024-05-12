@@ -95,13 +95,13 @@ public class Char{
 
             switch (input) {
                 case "A":
-                    getInfo(Char, Retrieve_Information,"A");
+                    getInfo(Char, Retrieve_Information,0);
                     break;
                 case "B":
-                    getInfo(Char, Retrieve_Information,"B");
+                    getInfo(Char, Retrieve_Information,1);
                     break;
                 case "C":
-                    getInfo(Char, Retrieve_Information,"C");
+                    getInfo(Char, Retrieve_Information,2);
                     break;
                 default:
                     System.out.println("Action Entered is Invalid");
@@ -111,39 +111,22 @@ public class Char{
             System.out.println("Character is invalid");
         }
     }
-    static void getInfo(String Character, Hashtable<String, String[]> Information, String cha) {
+    static void getInfo(String Character, Hashtable<String, String[]> Information, Integer Option) {
         String[] Info = Information.get(Character);
-        int i = 0;
         Character = Character.charAt(0) + Character.substring(1, Character.length()).toLowerCase();
-        switch (cha) {
-            case "A":
-                i = 0;
+
+        switch (Option){
+            case 0:
+                System.out.println(Character + " is a " + Info[Option] + " character.");;
                 break;
-            case "B":
-                i = 1;
+            case 1:
+                System.out.println(Character + " is a " + Info[Option] + " path character.");
                 break;
-            case "C":
-                i = 2;
+            case 2:
+                System.out.println(Character + "'s element is " + Info[Option] + ".");
                 break;
-            default:
-                System.out.println("Invalid option");
-                return; // exit the method if the option is invalid
         }
-        if (Info != null && i < Info.length) {
-           switch (i){
-               case 0:
-                  System.out.println(Character + " is a " + Info[i] + " character.");;
-                  break;
-               case 1:
-                   System.out.println(Character + " is a " + Info[i] + " path character.");
-                   break;
-               case 2:
-                   System.out.println(Character + "'s element is " + Info[i] + ".");
-                   break;
-           }
-        } else {
-            System.out.println("Character information not found or index out of bounds.");
-        }
+
     }
 
 }
