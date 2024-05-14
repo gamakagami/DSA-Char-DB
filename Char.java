@@ -2,13 +2,13 @@ import java.util.*;
 public class Char{
     public static void main(String[] args){
 
-        String[] Characters = {"ACHERON","ARGENTI","ARLAN","ASTA","AVENTURINE","BAILU","BLACKSWAN","BLADE","BRONYA",
+        String[] characterContainer = {"ACHERON","ARGENTI","ARLAN","ASTA","AVENTURINE","BAILU","BLACKSWAN","BLADE","BRONYA",
                 "CLARA","DANHENG","DR.RATIO","FUXUAN","GALLAGHER","GEPARD","GUINAIFEN","HANYA","HERTA","HIMEKO",
                 "HOOK","HUOHUO","IMBIBITORLUNAE","JINGYUAN","JINGLIU","KAFKA","LUKA","LUOCHA","LYNX","MARCH7TH",
                 "MISHA","NATASHA","PELA","QINGQUE","ROBIN","RUANMEI","SAMPO","SEELE","SERVAL","SILVERWOLF","SPARKLE",
                 "SUSHANG","TINGYUN","TOPAZ","TRAILBLAZER","WELT","XUEYI","YANQING","YUKONG"};
 
-        String[][] Character_Information = {
+        String[][] characterInformation = {
                 {"5 Star","Nihility","Lightning"},
                 {"5 Star","Erudition","Physical"},
                 {"4 Star","Destruction","Lightning"},
@@ -63,8 +63,8 @@ public class Char{
 
         Hashtable<String, String[]> Retrieve_Information = new Hashtable<>(48);
 
-        for (int i = 0; i <Characters.length; i++){
-            Retrieve_Information.put(Characters[i], Character_Information[i]);
+        for (int i = 0; i < characterContainer.length; i++){
+            Retrieve_Information.put(characterContainer[i], characterInformation[i]);
         }
 
         Scanner scn = new Scanner(System.in);
@@ -95,24 +95,24 @@ public class Char{
 
             switch (action) {
                 case "A":
-                    String character = getCharacter(scn, Characters);
+                    String character = getCharacter(scn, characterContainer);
                     getInfo(character, Retrieve_Information, 0);
                     break;
 
                 case "B":
-                    character = getCharacter(scn, Characters);
+                    character = getCharacter(scn, characterContainer);
                     getInfo(character, Retrieve_Information, 1);
                     break;
 
                 case "C":
-                    character = getCharacter(scn, Characters);
+                    character = getCharacter(scn, characterContainer);
                     getInfo(character, Retrieve_Information, 2);
                     break;
 
                 case "D":
                     System.out.println("List of Characters: ");
-                    for (int i = 0; i < Characters.length; i++) {
-                        String name = (Characters[i].charAt(0)) + (Characters[i].substring(1, Characters[i].length()).toLowerCase());
+                    for (int i = 0; i < characterContainer.length; i++) {
+                        String name = (characterContainer[i].charAt(0)) + (characterContainer[i].substring(1, characterContainer[i].length()).toLowerCase());
                         System.out.println(i + 1 + ". " + name);
                     }
                     break;
