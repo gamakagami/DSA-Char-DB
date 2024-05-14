@@ -70,7 +70,6 @@ public class Char{
         Scanner scn = new Scanner(System.in);
 
         System.out.println("Welcome to a Honkai Star Rail Database System");
-
         boolean loop = true;
 
         while (loop) {
@@ -88,6 +87,7 @@ public class Char{
                         break;
                     }
                 }
+
                 if (!action_present) {
                     System.out.println("Enter a valid action (A, B, C, D)");
                 }
@@ -98,14 +98,17 @@ public class Char{
                     String character = getCharacter(scn, Characters);
                     getInfo(character, Retrieve_Information, 0);
                     break;
+
                 case "B":
                     character = getCharacter(scn, Characters);
                     getInfo(character, Retrieve_Information, 1);
                     break;
+
                 case "C":
                     character = getCharacter(scn, Characters);
                     getInfo(character, Retrieve_Information, 2);
                     break;
+
                 case "D":
                     System.out.println("List of Characters: ");
                     for (int i = 0; i < Characters.length; i++) {
@@ -113,6 +116,7 @@ public class Char{
                         System.out.println(i + 1 + ". " + name);
                     }
                     break;
+
                 case "Q":
                     System.out.println("Quitting program..");
                     loop = false; break;
@@ -122,6 +126,7 @@ public class Char{
     }
 
     static void getInfo(String Character, Hashtable<String, String[]> Information, Integer Option) {
+
         String[] Info = Information.get(Character);
         Character = Character.charAt(0) + Character.substring(1, Character.length()).toLowerCase();
 
@@ -129,9 +134,11 @@ public class Char{
             case 0:
                 System.out.println(Character + " is a " + Info[Option] + " character.");;
                 break;
+
             case 1:
                 System.out.println(Character + " is a " + Info[Option] + " path character.");
                 break;
+
             case 2:
                 System.out.println(Character + "'s element is " + Info[Option] + ".");
                 break;
