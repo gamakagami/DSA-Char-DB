@@ -59,7 +59,7 @@ public class Char{
                 {"4 Star","Harmony","Imaginary"}
         };
 
-        String[] Action_List = {"A", "B", "C"};
+        String[] Action_List = {"A", "B", "C", "D", "Q"};
 
         Hashtable<String, String[]> Retrieve_Information = new Hashtable<>(48);
 
@@ -70,39 +70,57 @@ public class Char{
         Scanner scn = new Scanner(System.in);
 
         System.out.println("Welcome to a Honkai Star Rail Database System");
-        System.out.println("A: Get Rarity\nB: Get Path\nC: Get Element\n----------------------------------\nPlease enter an action you want to perform: ");
 
-        boolean action_present = false;
-        String action = "";
+        boolean loop = true;
 
-        while (!action_present) {
-            action = scn.nextLine().toUpperCase();
+        while (loop) {
+            System.out.println("----------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nQ: Quit\n----------------------------------\nPlease enter an action you want to perform: ");
 
-            for (int i = 0; i < Action_List.length; i ++){
-                if (action.equals(Action_List[i])){
-                    action_present = true;
-                    break;
+            boolean action_present = false;
+            String action = "";
+
+            while (!action_present) {
+                action = scn.nextLine().toUpperCase();
+
+                for (int i = 0; i < Action_List.length; i++) {
+                    if (action.equals(Action_List[i])) {
+                        action_present = true;
+                        break;
+                    }
+                }
+                if (!action_present) {
+                    System.out.println("Enter a valid action (A, B, C, D)");
                 }
             }
-            if (!action_present){
-                System.out.println("Enter a valid action (A, B, C)");
+
+            switch (action) {
+                case "A":
+                    String character = getCharacter(scn, Characters);
+                    getInfo(character, Retrieve_Information, 0);
+                    break;
+                case "B":
+                    character = getCharacter(scn, Characters);
+                    getInfo(character, Retrieve_Information, 1);
+                    break;
+                case "C":
+                    character = getCharacter(scn, Characters);
+                    getInfo(character, Retrieve_Information, 2);
+                    break;
+                case "D":
+                    System.out.println("List of Characters: ");
+                    for (int i = 0; i < Characters.length; i++) {
+                        String name = (Characters[i].charAt(0)) + (Characters[i].substring(1, Characters[i].length()).toLowerCase());
+                        System.out.println(i + 1 + ". " + name);
+                    }
+                    break;
+                case "Q":
+                    System.out.println("Quitting program..");
+                    loop = false; break;
             }
-        }
-
-        switch(action){
-            case "A":
-                String Character = getCharacter(scn, Characters);
-                getInfo(Character, Retrieve_Information,0); break;
-            case "B":
-                Character = getCharacter(scn, Characters);
-                getInfo(Character, Retrieve_Information,1); break;
-            case "C":
-                Character = getCharacter(scn, Characters);
-                getInfo(Character, Retrieve_Information,2); break;
-
         }
 
     }
+
     static void getInfo(String Character, Hashtable<String, String[]> Information, Integer Option) {
         String[] Info = Information.get(Character);
         Character = Character.charAt(0) + Character.substring(1, Character.length()).toLowerCase();
