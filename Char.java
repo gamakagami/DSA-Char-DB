@@ -59,6 +59,8 @@ public class Char{
                 {"4 Star","Harmony","Imaginary"}
         };
 
+        String[] Action_List = {"A", "B", "C"};
+
         Hashtable<String, String[]> Retrieve_Information = new Hashtable<>(48);
 
         for (int i = 0; i <Characters.length; i++){
@@ -66,50 +68,41 @@ public class Char{
         }
 
         Scanner scn = new Scanner(System.in);
-        System.out.println("Welcome to Honkai Star Rail Database System!");
-        System.out.println("---------------------------------------------");
 
-        Boolean present = false;
-        System.out.println("Enter the Character:");
-        String Char = scn.nextLine();
-        Char = Char.replace(" ", "").toUpperCase();
-        if (Char.equals("IMBIBITORLUNAE")){
-            Char = "DANHENGIL";
-        }
+        Boolean action_present = false;
 
-        for (String i : Characters){
-            if (i.equals(Char)){
-                present = true;
+        System.out.println("Welcome to a Honkai Star Rail Database System");
+        System.out.println("Action list:\n------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\n------------------------------\nPlease enter an action you want to perform: ");
+
+        String action = "";
+
+        while (!action_present) {
+            action = scn.nextLine().toUpperCase();
+
+            for (int i = 0; i < Action_List.length; i ++){
+                if (action.equals(Action_List[i])){
+                    action_present = true;
+                    break;
+                }
+            }
+            if (!action_present){
+                System.out.println("Enter a valid action (A, B, C)");
             }
         }
 
-        if (present) {
-            System.out.println("---------------------------------------------");
-            System.out.println("Action:");
-            System.out.println("A: Get Rarity");
-            System.out.println("B: Get Path");
-            System.out.println("C: Get Element");
-            System.out.println("---------------------------------------------");
-            System.out.println("Enter the Action:");
-            String input = scn.nextLine().toUpperCase();
+        switch(action){
+            case "A":
+                String Character = getCharacter(scn, Characters);
+                getInfo(Character, Retrieve_Information,0); break;
+            case "B":
+                Character = getCharacter(scn, Characters);
+                getInfo(Character, Retrieve_Information,1); break;
+            case "C":
+                Character = getCharacter(scn, Characters);
+                getInfo(Character, Retrieve_Information,2); break;
 
-            switch (input) {
-                case "A":
-                    getInfo(Char, Retrieve_Information,0);
-                    break;
-                case "B":
-                    getInfo(Char, Retrieve_Information,1);
-                    break;
-                case "C":
-                    getInfo(Char, Retrieve_Information,2);
-                    break;
-                default:
-                    System.out.println("Action Entered is Invalid");
-                    break;
-            }
-        } else {
-            System.out.println("Character is invalid");
         }
+
     }
     static void getInfo(String Character, Hashtable<String, String[]> Information, Integer Option) {
         String[] Info = Information.get(Character);
@@ -128,5 +121,31 @@ public class Char{
         }
 
     }
+
+    static String getCharacter(Scanner scn, String[] Characters){
+
+        Boolean present = false;
+        System.out.println("Please Enter a Character Name: ");
+        String Char = "";
+
+        while (!present) {
+            Char = scn.nextLine();
+            Char = Char.replace(" ", "").toUpperCase();
+            if (Char.equals("IMBIBITORLUNAE")) {
+                Char = "DANHENGIL";
+            }
+
+            for (String i : Characters) {
+                if (i.equals(Char)) {
+                    present = true;
+                    break;
+                }
+            }
+            if (!present){
+                System.out.println("Please enter a valid Character");
+            }
+        }
+        return Char;
+}
 
 }
