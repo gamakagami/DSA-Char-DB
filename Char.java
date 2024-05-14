@@ -69,11 +69,10 @@ public class Char{
 
         Scanner scn = new Scanner(System.in);
 
-        Boolean action_present = false;
-
         System.out.println("Welcome to a Honkai Star Rail Database System");
-        System.out.println("Action list:\n------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\n------------------------------\nPlease enter an action you want to perform: ");
+        System.out.println("A: Get Rarity\nB: Get Path\nC: Get Element\n----------------------------------\nPlease enter an action you want to perform: ");
 
+        boolean action_present = false;
         String action = "";
 
         while (!action_present) {
@@ -124,9 +123,10 @@ public class Char{
 
     static String getCharacter(Scanner scn, String[] Characters){
 
-        Boolean present = false;
-        System.out.println("Please Enter a Character Name: ");
+        boolean present = false;
         String Char = "";
+
+        System.out.println("Please Enter a Character Name: ");
 
         while (!present) {
             Char = scn.nextLine();
@@ -146,6 +146,6 @@ public class Char{
             }
         }
         return Char;
-}
+    }
 
 }
