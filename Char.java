@@ -22,7 +22,7 @@ public class Char{
                 {"4 Star","The Hunt","Wind","Astral Express"},
                 {"5 Star","The Hunt","Imaginary","Intelligentsia Guild"},
                 {"5 Star","Preservation","Quantum","Xianzhou Loufu"},
-                {"4 Star","Abundance","Fire","},
+                {"4 Star","Abundance","Fire"},
                 {"5 Star","Preservation","Ice"},
                 {"4 Star","Nihility","Fire"},
                 {"4 Star","Harmony","Physical"},
