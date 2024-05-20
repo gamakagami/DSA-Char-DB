@@ -2,11 +2,11 @@ import java.util.*;
 public class Char{
     public static void main(String[] args){
 
-        String[] characterContainer = {"ACHERON","ARGENTI","ARLAN","ASTA","AVENTURINE","BAILU","BLACKSWAN","BLADE","BRONYA",
-                "CLARA","DANHENG","DR.RATIO","FUXUAN","GALLAGHER","GEPARD","GUINAIFEN","HANYA","HERTA","HIMEKO",
-                "HOOK","HUOHUO","IMBIBITORLUNAE","JINGYUAN","JINGLIU","KAFKA","LUKA","LUOCHA","LYNX","MARCH7TH",
-                "MISHA","NATASHA","PELA","QINGQUE","ROBIN","RUANMEI","SAMPO","SEELE","SERVAL","SILVERWOLF","SPARKLE",
-                "SUSHANG","TINGYUN","TOPAZ","TRAILBLAZER","WELT","XUEYI","YANQING","YUKONG"};
+        String[] characterContainer = {"Acheron","Argenti","Arlan","Asta","Aventurine","Bailu","Blackswan","Blade","Bronya",
+                "Clara","Danheng","Dr.ratio","Fuxuan","Gallagher","Gepard","Guinaifen","Hanya","Herta","Himeko",
+                "Hook","Huohuo","Imbibitorlunae","Jingyuan","Jingliu","Kafka","Luka","Luocha","Lynx","March7th",
+                "Misha","Natasha","Pela","Qingque","Robin","Ruanmei","Sampo","Seele","Serval","Silverwolf","Sparkle",
+                "Sushang","Tingyun","Topaz","Trailblazer","Welt","Xueyi","Yanqing","Yukong"};
 
         String[][] characterInformation = {
                 {"5 Star","Nihility","Lightning","Self Anihilator"},
@@ -79,10 +79,10 @@ public class Char{
             String action = "";
 
             while (!action_present) {
-                action = scn.nextLine().toUpperCase();
+                action = scn.nextLine();
 
                 for (int i = 0; i < Action_List.length; i++) {
-                    if (action.equals(Action_List[i])) {
+                    if (action.equalsIgnoreCase(Action_List[i])) {
                         action_present = true;
                         break;
                     }
@@ -93,7 +93,7 @@ public class Char{
                 }
             }
 
-            switch (action) {
+            switch (action.toUpperCase()) {
                 case "A":
                     String character = getCharacter(scn, characterContainer);
                     getInfo(character, Retrieve_Information, 0);
@@ -112,7 +112,7 @@ public class Char{
                 case "D":
                     System.out.println("List of Characters: ");
                     for (int i = 0; i < characterContainer.length; i++) {
-                        String name = (characterContainer[i].charAt(0)) + (characterContainer[i].substring(1, characterContainer[i].length()).toLowerCase());
+                        String name = characterContainer[i];
                         System.out.println(i + 1 + ". " + name);
                     }
                     break;
@@ -127,8 +127,7 @@ public class Char{
 
     static void getInfo(String Character, Hashtable<String, String[]> Information, Integer Option) {
 
-        String[] Info = Information.get(Character);
-        Character = Character.charAt(0) + Character.substring(1, Character.length()).toLowerCase();
+        String[] Info = Information.get(Character.substring(0,1).toUpperCase() + Character.substring(1,Character.length()).toLowerCase());
 
         switch (Option){
             case 0:
@@ -155,13 +154,10 @@ public class Char{
 
         while (!present) {
             Char = scn.nextLine();
-            Char = Char.replace(" ", "").toUpperCase();
-            if (Char.equals("IMBIBITORLUNAE")) {
-                Char = "DANHENGIL";
-            }
+            Char = Char.replace(" ", "");
 
             for (String i : Characters) {
-                if (i.equals(Char)) {
+                if (i.equalsIgnoreCase(Char)) {
                     present = true;
                     break;
                 }
