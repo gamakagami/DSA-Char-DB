@@ -16,7 +16,7 @@ public class Char{
                 {"5 Star","Preservation","Imaginary","IPC"},
                 {"5 Star","Abundance","Lightning",,"The Xianzhou Loufu"},
                 {"5 Star","Nihility","Wind","Garden of Recollection"},
-                {"5 Star","Destruction","Wind","Stelalron Hunter"},
+                {"5 Star","Destruction","Wind","Stellaron Hunter"},
                 {"5 Star","Harmony","Wind","Belobog"},
                 {"5 Star","Destruction","Physical","Belobog"},
                 {"4 Star","The Hunt","Wind","Astral Express"},
