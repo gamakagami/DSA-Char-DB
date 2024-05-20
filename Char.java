@@ -110,11 +110,10 @@ public class Char{
                     break;
 
                 case "D":
-                    System.out.println("List of Characters: ");
-                    for (int i = 0; i < characterContainer.length; i++) {
-                        String name = characterContainer[i];
-                        System.out.println(i + 1 + ". " + name);
-                    }
+                    System.out.println("                                         || Printing Characters Information ||\n ");
+                    System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
+
+                    printWithSpace(characterContainer, characterInformation);
                     break;
 
                 case "Q":
@@ -167,6 +166,28 @@ public class Char{
             }
         }
         return Char;
+    }
+
+    static void printWithSpace(String[] characterContainer, String[][] characterInformation){
+
+        for (int i = 0; i < characterContainer.length; i++) {
+            System.out.print(characterContainer[i]);
+
+            int nameLength = characterContainer[i].length();
+            for (int j = nameLength; j < 20; j++) {
+                System.out.print(" ");
+            }
+
+            for (int a = 0; a<3; a++) {
+                System.out.print(characterInformation[i][a]);
+                int length = characterInformation[i][a].length();
+                for (int k = length; k < 20; k++) {
+                    System.out.print(" ");
+                }
+            }
+
+            System.out.println(characterInformation[i][3]);
+        }
     }
 
 }
