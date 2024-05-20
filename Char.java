@@ -14,7 +14,7 @@ public class Char{
                 {"4 Star","Destruction","Lightning","Herta Space Station"},
                 {"4 Star","Harmony","Fire","Herta Space Station"},
                 {"5 Star","Preservation","Imaginary","IPC"},
-                {"5 Star","Abundance","Lightning",,"The Xianzhou Loufu"},
+                {"5 Star","Abundance","Lightning","The Xianzhou Loufu"},
                 {"5 Star","Nihility","Wind","Garden of Recollection"},
                 {"5 Star","Destruction","Wind","Stellaron Hunter"},
                 {"5 Star","Harmony","Wind","Belobog"},
