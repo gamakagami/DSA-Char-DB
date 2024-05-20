@@ -1,5 +1,5 @@
 import java.util.*;
-public class Char{
+public class Main{
     public static void main(String[] args){
 
         String[] characterContainer = {"Acheron","Argenti","Arlan","Asta","Aventurine","Bailu","Blackswan","Blade","Bronya",
@@ -126,6 +126,7 @@ public class Char{
 
     static void getInfo(String Character, Hashtable<String, String[]> Information, Integer Option) {
 
+        Character = Character.substring(0,1).toUpperCase() + Character.substring(1, Character.length()).toLowerCase();
         String[] Info = Information.get(Character.substring(0,1).toUpperCase() + Character.substring(1,Character.length()).toLowerCase());
 
         switch (Option){
