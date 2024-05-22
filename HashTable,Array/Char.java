@@ -44,7 +44,6 @@ public class Char {
 
                 case "D":
                     System.out.println("                                         || Printing Characters Information ||\n ");
-                    System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
 
                     printWithSpace(chars.characterContainer, chars.characterInformation);
                     loop = proceed();
@@ -54,6 +53,7 @@ public class Char {
                     System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n");
                     String filter = checkInput(scn, new String[]{"A","B","C","D","E"});
 
+                    filter(scn, filter, chars.characterContainer, chars.characterInformation);
                     loop = proceed();
                     break;
 
@@ -114,6 +114,8 @@ public class Char {
     }
 
     static void printWithSpace(String[] characterContainer, String[][] characterInformation) {
+
+        System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
 
         for (int i = 0; i < characterContainer.length; i++) {
             System.out.print(characterContainer[i]);
@@ -184,10 +186,13 @@ public class Char {
     }
 
 
-    static void filter(String input, String[] characterContainer, String[][] characterInformation){
-        switch(input) {
+    static void filter(Scanner scn, String input, String[] characterContainer, String[][] characterInformation){
+
+        switch(input.toUpperCase()) {
 
             case "A":
+                System.out.print("Please enter an alphabet to filter by: ");
+                checkInput(scn, new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"});
 
                 for (String s : characterContainer){
                     if (String.valueOf(s.charAt(0)).equalsIgnoreCase(input)){
