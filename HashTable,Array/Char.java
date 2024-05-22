@@ -1,14 +1,12 @@
 import java.util.*;
-public class Char{
-    public static void main(String[] args){
+public class Char {
+    public static void main(String[] args) {
 
         Character chars = new Character();
 
-        String[] Action_List = {"A", "B", "C", "D", "Q"};
-
         Hashtable<String, String[]> Retrieve_Information = new Hashtable<>(48);
 
-        for (int i = 0; i < chars.characterContainer.length; i++){
+        for (int i = 0; i < chars.characterContainer.length; i++) {
             Retrieve_Information.put(chars.characterContainer[i], chars.characterInformation[i]);
         }
 
@@ -18,25 +16,12 @@ public class Char{
         boolean loop = true;
 
         while (loop) {
-            System.out.println("----------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nQ: Quit\n----------------------------------\nPlease enter an action you want to perform: ");
+            System.out.println("----------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nE: Filter Characters\nQ: Quit\n----------------------------------\nPlease enter an action you want to perform: ");
 
             boolean action_present = false;
             String action = "";
 
-            while (!action_present) {
-                action = scn.nextLine();
-
-                for (int i = 0; i < Action_List.length; i++) {
-                    if (action.equalsIgnoreCase(Action_List[i])) {
-                        action_present = true;
-                        break;
-                    }
-                }
-
-                if (!action_present) {
-                    System.out.println("Enter a valid action (A, B, C, D)");
-                }
-            }
+            action = checkInput(scn, new String[]{"A", "B", "C", "D", "E", "Q"});
 
             switch (action.toUpperCase()) {
                 case "A":
@@ -65,9 +50,18 @@ public class Char{
                     loop = proceed();
                     break;
 
+                case "E":
+                    System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n");
+                    String filter = checkInput(scn, new String[]{"A","B","C","D","E"});
+
+                    loop = proceed();
+                    break;
+
+
                 case "Q":
                     System.out.println("Quitting program..");
-                    loop = false; break;
+                    loop = false;
+                    break;
             }
         }
 
@@ -75,12 +69,13 @@ public class Char{
 
     static void getInfo(String Character, Hashtable<String, String[]> Information, Integer Option) {
 
-        Character = Character.substring(0,1).toUpperCase() + Character.substring(1, Character.length()).toLowerCase();
-        String[] Info = Information.get(Character.substring(0,1).toUpperCase() + Character.substring(1,Character.length()).toLowerCase());
+        Character = Character.substring(0, 1).toUpperCase() + Character.substring(1, Character.length()).toLowerCase();
+        String[] Info = Information.get(Character.substring(0, 1).toUpperCase() + Character.substring(1, Character.length()).toLowerCase());
 
-        switch (Option){
+        switch (Option) {
             case 0:
-                System.out.println(Character + " is a " + Info[Option] + " character.");;
+                System.out.println(Character + " is a " + Info[Option] + " character.");
+                ;
                 break;
 
             case 1:
@@ -94,7 +89,7 @@ public class Char{
 
     }
 
-    static String getCharacter(Scanner scn, String[] Characters){
+    static String getCharacter(Scanner scn, String[] Characters) {
 
         boolean present = false;
         String Char = "";
@@ -111,14 +106,14 @@ public class Char{
                     break;
                 }
             }
-            if (!present){
+            if (!present) {
                 System.out.println("Please enter a valid Character");
             }
         }
         return Char;
     }
 
-    static void printWithSpace(String[] characterContainer, String[][] characterInformation){
+    static void printWithSpace(String[] characterContainer, String[][] characterInformation) {
 
         for (int i = 0; i < characterContainer.length; i++) {
             System.out.print(characterContainer[i]);
@@ -128,7 +123,7 @@ public class Char{
                 System.out.print(" ");
             }
 
-            for (int a = 0; a<3; a++) {
+            for (int a = 0; a < 3; a++) {
                 System.out.print(characterInformation[i][a]);
                 int length = characterInformation[i][a].length();
                 for (int k = length; k < 20; k++) {
@@ -140,7 +135,7 @@ public class Char{
         }
     }
 
-    static boolean proceed(){
+    static boolean proceed() {
 
         System.out.println("Would you like to Continue? (Y/N)");
         Scanner scn = new Scanner(System.in);
@@ -158,7 +153,7 @@ public class Char{
                 loop = false;
             }
 
-            if (loop){
+            if (loop) {
                 System.out.print("Please enter Y or N ");
             }
         }
@@ -166,4 +161,41 @@ public class Char{
         return continueTheProgram;
     }
 
+    static String checkInput(Scanner scn, String[] targetActions) {
+
+        boolean action_present = false;
+        String action = "";
+
+        while (!action_present) {
+            action = scn.nextLine();
+
+            for (int i = 0; i < targetActions.length; i++) {
+                if (action.equalsIgnoreCase(targetActions[i])) {
+                    action_present = true;
+                    break;
+                }
+            }
+
+            if (!action_present) {
+                System.out.println("Please enter a valid action");
+            }
+        }
+        return action;
+    }
+
+
+    static void filter(String input, String[] characterContainer, String[][] characterInformation){
+        switch(input) {
+
+            case "A":
+
+                for (String s : characterContainer){
+                    if (String.valueOf(s.charAt(0)).equalsIgnoreCase(input)){
+                        System.out.print(s);
+                    }
+                }
+
+
+        }
+    }
 }
