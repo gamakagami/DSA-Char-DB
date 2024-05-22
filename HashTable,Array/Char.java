@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class Char {
     public static void main(String[] args) {
 
@@ -44,7 +45,6 @@ public class Char {
 
                 case "D":
                     System.out.println("                                         || Printing Characters Information ||\n ");
-
                     printWithSpace(chars.characterContainer, chars.characterInformation);
                     loop = proceed();
                     break;
@@ -56,7 +56,6 @@ public class Char {
                     filter(scn, filter, chars.characterContainer, chars.characterInformation);
                     loop = proceed();
                     break;
-
 
                 case "Q":
                     System.out.println("Quitting program..");
@@ -75,7 +74,6 @@ public class Char {
         switch (Option) {
             case 0:
                 System.out.println(Character + " is a " + Info[Option] + " character.");
-                ;
                 break;
 
             case 1:
@@ -86,7 +84,6 @@ public class Char {
                 System.out.println(Character + "'s element is " + Info[Option] + ".");
                 break;
         }
-
     }
 
     static String getCharacter(Scanner scn, String[] Characters) {
@@ -118,23 +115,26 @@ public class Char {
         System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
 
         for (int i = 0; i < characterContainer.length; i++) {
-            System.out.print(characterContainer[i]);
+            printCharacterInfo(characterContainer[i], characterInformation[i]);
+        }
+    }
 
-            int nameLength = characterContainer[i].length();
-            for (int j = nameLength; j < 20; j++) {
+    static void printCharacterInfo(String character, String[] info) {
+        System.out.print(character);
+        int nameLength = character.length();
+        for (int j = nameLength; j < 20; j++) {
+            System.out.print(" ");
+        }
+
+        for (int a = 0; a < 3; a++) {
+            System.out.print(info[a]);
+            int length = info[a].length();
+            for (int k = length; k < 20; k++) {
                 System.out.print(" ");
             }
-
-            for (int a = 0; a < 3; a++) {
-                System.out.print(characterInformation[i][a]);
-                int length = characterInformation[i][a].length();
-                for (int k = length; k < 20; k++) {
-                    System.out.print(" ");
-                }
-            }
-
-            System.out.println(characterInformation[i][3]);
         }
+
+        System.out.println(info[3]);
     }
 
     static boolean proceed() {
@@ -192,15 +192,61 @@ public class Char {
 
             case "A":
                 System.out.print("Please enter an alphabet to filter by: ");
-                checkInput(scn, new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"});
+                String alphabet = checkInput(scn, new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"});
 
                 for (String s : characterContainer){
-                    if (String.valueOf(s.charAt(0)).equalsIgnoreCase(input)){
-                        System.out.print(s);
+                    if (String.valueOf(s.charAt(0)).equalsIgnoreCase(alphabet)){
+                        printCharacterInfo(s, characterInformation[Arrays.asList(characterContainer).indexOf(s)]);
                     }
                 }
+                break;
 
+            case "B":
+                System.out.print("Please enter an element to filter by: ");
+                String element = checkInput(scn, new String[]{"Fire", "Ice", "Lightning", "Physical", "Wind", "Quantum", "Imaginary", "Adaptive"});
+                for (int i = 0; i < characterContainer.length; i++) {
+                    if (characterInformation[i][2].equalsIgnoreCase(element)) {
+                        printCharacterInfo(characterContainer[i], characterInformation[i]);
+                    }
+                }
+                break;
 
+            case "C":
+                System.out.print("Please enter a path to filter by: ");
+                String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "The Hunt", "Preservation", "Abundance", "Adaptive"});
+                for (                int i = 0; i < characterContainer.length; i++) {
+                    if (characterInformation[i][1].equalsIgnoreCase(path)) {
+                        printCharacterInfo(characterContainer[i], characterInformation[i]);
+                    }
+                }
+                break;
+
+            case "D":
+                System.out.print("Please enter a faction to filter by: ");
+                String faction = checkInput(scn, new String[]{"Herta Space Station", "IPC", "The Xianzhou Loufu", "Stellaron Hunter", "Belobog", "Astral Express", "Intelligentsia Guild", "Penacony", "Masked Fools"});
+                for (int i = 0; i < characterContainer.length; i++) {
+                    if (characterInformation[i][3].equalsIgnoreCase(faction)) {
+                        printCharacterInfo(characterContainer[i], characterInformation[i]);
+                    }
+                }
+                break;
+
+            case "E":
+                System.out.print("Please enter a rarity to filter by: ");
+                String rarity = checkInput(scn, new String[]{"4 Star", "5 Star"});
+                filterByRarity(rarity, characterContainer, characterInformation);
+                break;
+        }
+    }
+
+    static void filterByRarity(String rarity, String[] characterContainer, String[][] characterInformation) {
+        System.out.println("Characters with Rarity " + rarity + ":");
+        System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
+
+        for (int i = 0; i < characterContainer.length; i++) {
+            if (characterInformation[i].length > 0 && characterInformation[i][0].equalsIgnoreCase(rarity)) {
+                printCharacterInfo(characterContainer[i], characterInformation[i]);
+            }
         }
     }
 }
