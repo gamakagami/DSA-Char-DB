@@ -202,7 +202,7 @@ public class Char {
                 break;
 
             case "B":
-                System.out.print("Please enter an element to filter by: ");
+                System.out.print("Please enter an element to filter by (Fire, Ice, Lightning, Physical, Wind, Quantum, Imaginary, Adaptive): ");
                 String element = checkInput(scn, new String[]{"Fire", "Ice", "Lightning", "Physical", "Wind", "Quantum", "Imaginary", "Adaptive"});
                 for (int i = 0; i < characterContainer.length; i++) {
                     if (characterInformation[i][2].equalsIgnoreCase(element)) {
@@ -212,7 +212,7 @@ public class Char {
                 break;
 
             case "C":
-                System.out.print("Please enter a path to filter by: ");
+                System.out.print("Please enter a path to filter by (Nihility, Erudition, Destruction, Harmony, The Hunt, Preservation, Abundance, Adaptive): ");
                 String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "The Hunt", "Preservation", "Abundance", "Adaptive"});
                 for (                int i = 0; i < characterContainer.length; i++) {
                     if (characterInformation[i][1].equalsIgnoreCase(path)) {
@@ -222,7 +222,7 @@ public class Char {
                 break;
 
             case "D":
-                System.out.print("Please enter a faction to filter by: ");
+                System.out.print("Please enter a faction to filter by (Herta Space Station, IPC, The Xianzhou Loufu, Stellaron Hunter, Belobog, Astral Express, Intelligentsia Guild, Penacony, Masked Fools): ");
                 String faction = checkInput(scn, new String[]{"Herta Space Station", "IPC", "The Xianzhou Loufu", "Stellaron Hunter", "Belobog", "Astral Express", "Intelligentsia Guild", "Penacony", "Masked Fools"});
                 for (int i = 0; i < characterContainer.length; i++) {
                     if (characterInformation[i][3].equalsIgnoreCase(faction)) {
@@ -232,7 +232,7 @@ public class Char {
                 break;
 
             case "E":
-                System.out.print("Please enter a rarity to filter by: ");
+                System.out.print("Please enter a rarity to filter by (4 Star, 5 Star): ");
                 String rarity = checkInput(scn, new String[]{"4 Star", "5 Star"});
                 filterByRarity(rarity, characterContainer, characterInformation);
                 break;
