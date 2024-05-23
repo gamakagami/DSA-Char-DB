@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Char {
+public class Main {
     public static void main(String[] args) {
 
         Character chars = new Character();
