@@ -66,7 +66,7 @@ public class Main extends Methods {
                         name = name.replace(" ","");
                         if (chars.characterContainer[i].equalsIgnoreCase(name)){
                             System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
-                            printCharacterInfo(name, chars.characterInformation[i]);
+                            printCharacterInfo(chars.characterContainer[i], chars.characterInformation[i]);
                         }
                     }
                     loop = proceed();
