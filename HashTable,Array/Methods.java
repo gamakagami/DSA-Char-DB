@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Methods {
     static void getInfo(String Character, Hashtable<String, String[]> Information, Integer Option) {
 
-        Character = Character.substring(0, 1).toUpperCase() + Character.substring(1, Character.length()).toLowerCase();
+        Character = Character.substring(0, 1).toUpperCase() + Character.substring(1).toLowerCase();
         String[] Info = Information.get(Character.substring(0, 1).toUpperCase() + Character.substring(1, Character.length()).toLowerCase());
 
         switch (Option) {
@@ -88,7 +88,6 @@ public class Methods {
                 loop = false;
 
             } else if (proceed.equalsIgnoreCase("N")) {
-                continueTheProgram = false;
                 loop = false;
             }
 
@@ -97,7 +96,7 @@ public class Methods {
             }
         }
 
-        if (!continueTheProgram){
+        if (!loop){
             System.out.println("Exiting...");
         }
         return continueTheProgram;
@@ -111,8 +110,8 @@ public class Methods {
         while (!action_present) {
             action = scn.nextLine();
 
-            for (int i = 0; i < targetActions.length; i++) {
-                if (action.equalsIgnoreCase(targetActions[i])) {
+            for (String targetAction : targetActions) {
+                if (action.equalsIgnoreCase(targetAction)) {
                     action_present = true;
                     break;
                 }
