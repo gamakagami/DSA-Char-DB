@@ -50,15 +50,15 @@ public class Main extends Methods {
                     break;
 
                 case "E":
-                    System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n");
-                    String filter = checkInput(scn, new String[]{"A","B","C","D","E"});
+                    System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\nF: Character\n");
+                    String filter = checkInput(scn, new String[]{"A","B","C","D","E","F"});
 
                     filter(scn, filter, chars.characterContainer, chars.characterInformation);
                     loop = proceed();
                     break;
 
                 case "F":
-                    System.out.println("Enter a charfacter name: ");
+                    System.out.println("Enter a character name: ");
                     String name = checkInput(scn, chars.characterContainer);
 
                     for (int i = 0; i < chars.characterContainer.length; i++){
