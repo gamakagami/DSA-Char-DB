@@ -6,7 +6,7 @@ public class Character {
             "Sushang","Tingyun","Topaz","Trailblazer","Welt","Xueyi","Yanqing","Yukong"};
 
     String[][] characterInformation = {
-            {"5 Star","Nihility","Lightning","Self Anihilator"},
+            {"5 Star","Nihility","Lightning","Self Annihilator"},
             {"5 Star","Erudition","Physical","Knights of Beauty"},
             {"4 Star","Destruction","Lightning","Herta Space Station"},
             {"4 Star","Harmony","Fire","Herta Space Station"},
@@ -37,7 +37,7 @@ public class Character {
             {"4 Star","Preservation","Ice","Astral Express"},
             {"4 Star","Destruction","Ice","Penacony"},
             {"4 Star","Abundance","Physical","Belobog"},
-            {"4 Star","Nihilty","Ice","Belobog"},
+            {"4 Star","Nihility","Ice","Belobog"},
             {"4 Star","Erudition","Quantum","The Xianzhou Loufu"},
             {"5 Star","Harmony","Physical","Penacony"},
             {"5 Star","Harmony","Ice","Herta Space Station"},
