@@ -97,6 +97,9 @@ public class Methods {
             }
         }
 
+        if (!continueTheProgram){
+            System.out.println("Exiting...");
+        }
         return continueTheProgram;
     }
 
