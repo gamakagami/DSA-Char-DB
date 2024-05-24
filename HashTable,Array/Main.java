@@ -17,12 +17,12 @@ public class Main extends Methods {
         boolean loop = true;
 
         while (loop) {
-            System.out.println("----------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nE: Filter Characters\nQ: Quit\n----------------------------------\nPlease enter an action you want to perform: ");
+            System.out.println("----------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nE: Filter Characters\nF: Display Information of a Chracter\nQ: Quit\n----------------------------------\nPlease enter an action you want to perform: ");
 
             boolean action_present = false;
             String action = "";
 
-            action = checkInput(scn, new String[]{"A", "B", "C", "D", "E", "Q"});
+            action = checkInput(scn, new String[]{"A", "B", "C", "D", "E","F", "Q"});
 
             switch (action.toUpperCase()) {
                 case "A":
@@ -57,6 +57,21 @@ public class Main extends Methods {
                     loop = proceed();
                     break;
 
+                case "F":
+                    System.out.println("Enter a charfacter name: ");
+                    String name = checkInput(scn, chars.characterContainer);
+
+                    for (int i = 0; i < chars.characterContainer.length; i++){
+
+                        name = name.replace(" ","");
+                        if (chars.characterContainer[i].equalsIgnoreCase(name)){
+                            System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
+                            printCharacterInfo(name, chars.characterInformation[i]);
+                        }
+                    }
+                    loop = proceed();
+                    break;
+
                 case "Q":
                     System.out.println("Quitting program..");
                     loop = false;
@@ -65,4 +80,4 @@ public class Main extends Methods {
         }
 
     }
-    }
+}
