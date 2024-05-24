@@ -125,16 +125,16 @@ public class Methods {
     }
 
 
-    static void filter(Scanner scn, String input, String[] characterContainer, String[][] characterInformation){
+    static void filter(Scanner scn, String input, String[] characterContainer, String[][] characterInformation) {
 
-        switch(input.toUpperCase()) {
+        switch (input.toUpperCase()) {
 
             case "A":
                 System.out.print("Please enter an alphabet to filter by: ");
-                String alphabet = checkInput(scn, new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"});
+                String alphabet = checkInput(scn, new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"});
 
-                for (String s : characterContainer){
-                    if (String.valueOf(s.charAt(0)).equalsIgnoreCase(alphabet)){
+                for (String s : characterContainer) {
+                    if (String.valueOf(s.charAt(0)).equalsIgnoreCase(alphabet)) {
                         printCharacterInfo(s, characterInformation[Arrays.asList(characterContainer).indexOf(s)]);
                     }
                 }
@@ -153,7 +153,7 @@ public class Methods {
             case "C":
                 System.out.print("Please enter a path to filter by (Nihility, Erudition, Destruction, Harmony, The Hunt, Preservation, Abundance, Adaptive): ");
                 String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "The Hunt", "Preservation", "Abundance", "Adaptive"});
-                for (                int i = 0; i < characterContainer.length; i++) {
+                for (int i = 0; i < characterContainer.length; i++) {
                     if (characterInformation[i][1].equalsIgnoreCase(path)) {
                         printCharacterInfo(characterContainer[i], characterInformation[i]);
                     }
@@ -175,8 +175,21 @@ public class Methods {
                 String rarity = checkInput(scn, new String[]{"4 Star", "5 Star"});
                 filterByRarity(rarity, characterContainer, characterInformation);
                 break;
+
+
+            case "F":
+                System.out.print("Please enter a character to filter by(Acheron,Argenti,Arlan,Asta,Aventurine,Bailu,Blackswan,Blade,Bronya,Clara,Danheng,Dr.ratio,Fuxuan,Gallagher,Gepard,Guinaifen,Hanya,Herta,Himeko,Hook,Huohuo,Imbibitorlunae,Jingyuan,Jingliu,Kafka,Luka,Luocha,Lynx,March7th,Misha,Natasha,Pela,Qingque,Robin,Ruanmei,Sampo,Seele,Serval,Silverwolf,Sparkle,Sushang,Tingyun,Topaz,Trailblazer,Welt,Xueyi,Yanqing,Yukong):");
+                String character = checkInput(scn, new String[]{"Acheron", "Argenti", "Arlan", "Asta", "Aventurine", "Bailu", "Blackswan", "Blade", "Bronya", "Clara", "Danheng", "Dr.ratio", "Fuxuan", "Gallagher", "Gepard", "Guinaifen", "Hanya", "Herta", "Himeko", "Hook", "Huohuo", "Imbibitorlunae", "Jingyuan", "Jingliu", "Kafka", "Luka", "Luocha", "Lynx", "March7th", "Misha", "Natasha", "Pela", "Qingque", "Robin", "Ruanmei", "Sampo", "Seele", "Serval", "Silverwolf", "Sparkle", "Sushang", "Tingyun", "Topaz", "Trailblazer", "Welt", "Xueyi", "Yanqing", "Yukong"});
+                int index = getIndex(character, characterContainer);
+
+                for(int i=0; i<characterInformation[0].length;i++){
+                    System.out.println(characterInformation[index][i]);
+
+                }
         }
-    }
+                }
+
+
 
     static void filterByRarity(String rarity, String[] characterContainer, String[][] characterInformation) {
         System.out.println("Characters with Rarity " + rarity + ":");
@@ -188,5 +201,13 @@ public class Methods {
             }
         }
     }
-
+    static int getIndex(String name, String[] arr){
+        int index = -1;
+        for(int i=0; i<arr.length;i++){
+            if(arr[i].equalsIgnoreCase(name)){
+                index = i;
+            }
+        }
+        return index;
+    }
 }
