@@ -17,12 +17,12 @@ public class Main extends Methods {
         boolean loop = true;
 
         while (loop) {
-            System.out.println("----------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nE: Filter Characters\nF: Display Information of a Chracter\nQ: Quit\n----------------------------------\nPlease enter an action you want to perform: ");
+            System.out.println("----------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nE: Filter Characters\nF: Display Information of a Chracter\nG: Sort Characters\nQ: Quit\n----------------------------------\nPlease enter an action you want to perform: ");
 
             boolean action_present = false;
             String action = "";
 
-            action = checkInput(scn, new String[]{"A", "B", "C", "D", "E","F", "Q"});
+            action = checkInput(scn, new String[]{"A", "B", "C", "D", "E", "F", "G", "Q"});
 
             switch (action.toUpperCase()) {
                 case "A":
@@ -45,20 +45,20 @@ public class Main extends Methods {
 
                 case "D":
                     System.out.println("                                         || Printing Characters Information ||\n ");
-                    printWithSpace(chars.characterContainer, chars.characterInformation);
+                    printAllCharacters(chars.characterContainer, chars.characterInformation);
                     loop = proceed();
                     break;
 
                 case "E":
-                    System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\nF: Character\n");
-                    String filter = checkInput(scn, new String[]{"A","B","C","D","E","F"});
+                    System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n");
+                    String filter = checkInput(scn, new String[]{"A","B","C","D","E"});
 
                     filter(scn, filter, chars.characterContainer, chars.characterInformation);
                     loop = proceed();
                     break;
 
                 case "F":
-                    System.out.println("Enter a character name: ");
+                    System.out.println("Enter a charfacter name: ");
                     String name = checkInput(scn, chars.characterContainer);
 
                     for (int i = 0; i < chars.characterContainer.length; i++){
@@ -71,6 +71,14 @@ public class Main extends Methods {
                     }
                     loop = proceed();
                     break;
+
+                case "G":
+                    System.out.print("Sort Characters By: \nA: Alphabet\nB: Rarity\nC: Path\nD: Element\nE: Faction\n");
+                    String sort = checkInput(scn, new String[]{"A","B","C","D","E"});
+                    sortCharacters(sort, chars.characterContainer, chars.characterInformation);
+                    loop = proceed();
+                    break;
+
 
                 case "Q":
                     System.out.println("Quitting program..");
