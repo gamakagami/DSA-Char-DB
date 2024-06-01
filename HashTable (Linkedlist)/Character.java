@@ -2,22 +2,18 @@ import java.util.LinkedList;
 
 public class Character {
     // Store character name in LinkedList
-    LinkedList<String> characterContainer = new LinkedList<>();
+    LinkedList<String> characterContainer = new LinkedList<>(List.of("Acheron", "Argenti", "Arlan", "Asta", "Aventurine", "Bailu", "Blackswan", "Blade", "Bronya",
+            "Clara", "Danheng", "Dr.ratio", "Fuxuan", "Gallagher", "Gepard", "Guinaifen", "Hanya", "Herta", "Himeko",
+            "Hook", "Huohuo", "Imbibitorlunae", "Jingyuan", "Jingliu", "Kafka", "Luka", "Luocha", "Lynx", "March7th",
+            "Misha", "Natasha", "Pela", "Qingque", "Robin", "Ruanmei", "Sampo", "Seele", "Serval", "Silverwolf", "Sparkle",
+            "Sushang", "Tingyun", "Topaz", "Trailblazer", "Welt", "Xueyi", "Yanqing", "Yukong"));
+
 
     // Store character information in LinkedList
     LinkedList<LinkedList<String>> characterInformation = new LinkedList<>();
 
     // Constructor to initialize the lists
     public Character() {
-        // Initialize characterContainer
-        String[] names = {"Acheron", "Argenti", "Arlan", "Asta", "Aventurine", "Bailu", "Blackswan", "Blade", "Bronya",
-                "Clara", "Danheng", "Dr.ratio", "Fuxuan", "Gallagher", "Gepard", "Guinaifen", "Hanya", "Herta", "Himeko",
-                "Hook", "Huohuo", "Imbibitorlunae", "Jingyuan", "Jingliu", "Kafka", "Luka", "Luocha", "Lynx", "March7th",
-                "Misha", "Natasha", "Pela", "Qingque", "Robin", "Ruanmei", "Sampo", "Seele", "Serval", "Silverwolf", "Sparkle",
-                "Sushang", "Tingyun", "Topaz", "Trailblazer", "Welt", "Xueyi", "Yanqing", "Yukong"};
-        for (String name : names) {
-            characterContainer.add(name);
-        }
 
         // Initialize characterInformation
         String[][] info = {
