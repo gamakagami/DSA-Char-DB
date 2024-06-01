@@ -93,8 +93,9 @@ public class Methods {
                 System.out.print("Please enter Y or N ");
             }
         }
-
-        System.out.println("Exiting...");
+        if (!continueTheProgram) {
+            System.out.println("Exiting...");
+        }
         return continueTheProgram;
     }
 
@@ -224,4 +225,3 @@ public class Methods {
         }
     }
 }
-
