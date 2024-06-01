@@ -1,10 +1,13 @@
 public class Character {
+    
+    // Store character name in array
     String[] characterContainer = {"Acheron","Argenti","Arlan","Asta","Aventurine","Bailu","Blackswan","Blade","Bronya",
             "Clara","Danheng","Dr.ratio","Fuxuan","Gallagher","Gepard","Guinaifen","Hanya","Herta","Himeko",
             "Hook","Huohuo","Imbibitorlunae","Jingyuan","Jingliu","Kafka","Luka","Luocha","Lynx","March7th",
             "Misha","Natasha","Pela","Qingque","Robin","Ruanmei","Sampo","Seele","Serval","Silverwolf","Sparkle",
             "Sushang","Tingyun","Topaz","Trailblazer","Welt","Xueyi","Yanqing","Yukong"};
 
+    // Store character information in array
     String[][] characterInformation = {
             {"5 Star","Nihility","Lightning","Self Annihilator"},
             {"5 Star","Erudition","Physical","Knights of Beauty"},
@@ -25,7 +28,7 @@ public class Character {
             {"4 Star","Harmony","Physical","Xianzhou Loufu"},
             {"4 Star","Erudition","Ice","Herta Space Station"},
             {"5 Star","Erudition","Fire","Astral Express"},
-            {"4 Star","Destuction","Fire","Belobog"},
+            {"4 Star","Destruction","Fire","Belobog"},
             {"5 Star","Abundance","Wind","The Xianzhou Loufu"},
             {"5 Star","Destruction","Imaginary","Astral Express"},
             {"5 Star","Erudition","Lightning","The Xianzhou Loufu"},
