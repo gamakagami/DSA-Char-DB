@@ -3,12 +3,15 @@ import java.util.*;
 // To know what the methods do, please refer to the Methods.java file.
 
 public class Main extends Methods {
+
+    public static Hashtable<String, String[]> Retrieve_Information; // Make it public so it can be accessed from other classes
+
     public static void main(String[] args) {
 
         Character chars = new Character();
 
         // Initializing the hashtable and adding elements (Name : Array of Information)
-        Hashtable<String, String[]> Retrieve_Information = new Hashtable<>(48);
+        Retrieve_Information = new Hashtable<>(48);
         for (int i = 0; i < chars.characterContainer.length; i++) {
             Retrieve_Information.put(chars.characterContainer[i], chars.characterInformation[i]);
         }
@@ -52,7 +55,7 @@ public class Main extends Methods {
                 // Printing all Characters
                 case "D":
                     System.out.println("\n== Printing Characters Information ==\n ");
-                    printAllCharacters(chars.characterContainer, chars.characterInformation);
+                    printAllCharacters(Retrieve_Information);
                     loop = proceed();
                     break;
 
@@ -63,7 +66,7 @@ public class Main extends Methods {
                     System.out.print("\nFilter Characters by: ");
                     String filter = checkInput(scn, new String[]{"A","B","C","D","E"});
 
-                    filter(scn, filter, chars.characterContainer, chars.characterInformation);
+                    filter(scn, filter, Retrieve_Information);
                     loop = proceed();
                     break;
 
@@ -90,7 +93,7 @@ public class Main extends Methods {
                     System.out.print("\n== Sort Characters Features ==\nA: Alphabet\nB: Rarity\nC: Path\nD: Element\nE: Faction\n");
                     System.out.print("\nSort Characters By: ");
                     String sort = checkInput(scn, new String[]{"A","B","C","D","E"});
-                    sortCharacters(sort, chars.characterContainer, chars.characterInformation);
+                    sortCharacters(sort, Retrieve_Information);
                     loop = proceed();
                     break;
 
