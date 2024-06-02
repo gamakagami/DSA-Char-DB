@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+import java.util.*;
 
 public class Character {
     // Store character name in LinkedList
