@@ -145,7 +145,7 @@ public class Methods {
             // Filters by the path
             case "C":
                 System.out.print("Please enter a path to filter by (Nihility, Erudition, Destruction, Harmony, The Hunt, Preservation, Abundance, Adaptive): ");
-                String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "TheHunt", "Preservation", "Abundance", "Adaptive"}); // Ensure input is valid
+                String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "The Hunt", "Preservation", "Abundance", "Adaptive"}); // Ensure input is valid
 
                 filterBasics(characterContainer, characterInformation, 1, path);
                 break;
