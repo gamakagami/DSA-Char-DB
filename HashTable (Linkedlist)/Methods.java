@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Methods2 {
+public class Methods {
     // Header that is printed when printing characters
     static String header = "Character:            Rarity:               Path:                 Element:              Faction:\n";
 
@@ -12,17 +12,17 @@ public class Methods2 {
         switch (option) {
             case 0:
                 // The index 0 in the array represents the rarity of the character
-                System.out.println(character + " is a " + info.get(option) + " character.");
+                System.out.println("\n== " + character + " is a " + info.get(option) + " Character ==");
                 break;
 
             case 1:
                 // The index 1 in the array represents the path of the character
-                System.out.println(character + " is a " + info.get(option) + " path character.");
+                System.out.println("\n==" + character + " is a " + info.get(option) + " Path Character ==");
                 break;
 
             case 2:
                 // The index 2 in the array represents the element of the character
-                System.out.println(character + "'s element is " + info.get(option) + ".");
+                System.out.println("\n==" + character + "'s element is " + info.get(option) + " ==");
                 break;
         }
     }
@@ -34,7 +34,7 @@ public class Methods2 {
         return checkInput(scn, characters.toArray(new String[0])); // Returns the valid character name
     }
 
-    // Method that prints the information of all characterss
+    // Method that prints the information of all characters
     static void printAllCharacters(LinkedList<String> characterContainer, LinkedList<LinkedList<String>> characterInformation) {
 
         System.out.println(header);
