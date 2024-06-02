@@ -69,9 +69,9 @@ public class Main extends Methods {
                         name = name.replace(" ",""); // To ensure no error happens due to space
 
                         // Goes through the character container and if it matches, it will display the character information
-                        if (chars.characterContainer[i].equalsIgnoreCase(name)){
+                        if (chars.characterContainer.get(i).equalsIgnoreCase(name)){
                             System.out.println("\nCharacter:            Rarity:               Path:                 Element:              Faction:");
-                            printCharacterInfo(chars.characterContainer[i], chars.characterInformation[i], 0);
+                            printCharacterInfo(chars.characterContainer.get(i), chars.characterInformation.get(i), 0);
                         }
                     }
                     loop = proceed();
