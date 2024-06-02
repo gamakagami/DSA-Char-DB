@@ -55,7 +55,7 @@ public class Main extends Methods {
                 // Printing all Characters
                 case "D":
                     System.out.println("\n== Printing Characters Information ==\n ");
-                    printAllCharacters(Retrieve_Information);
+                    printAllCharacters(Retrieve_Information, chars.characterContainer);
                     loop = proceed();
                     break;
 
@@ -66,7 +66,7 @@ public class Main extends Methods {
                     System.out.print("\nFilter Characters by: ");
                     String filter = checkInput(scn, new String[]{"A","B","C","D","E"});
 
-                    filter(scn, filter, Retrieve_Information);
+                    filter(scn, filter, Retrieve_Information, chars.characterContainer);
                     loop = proceed();
                     break;
 
@@ -93,7 +93,7 @@ public class Main extends Methods {
                     System.out.print("\n== Sort Characters Features ==\nA: Alphabet\nB: Rarity\nC: Path\nD: Element\nE: Faction\n");
                     System.out.print("\nSort Characters By: ");
                     String sort = checkInput(scn, new String[]{"A","B","C","D","E"});
-                    sortCharacters(sort, Retrieve_Information);
+                    sortCharacters(sort, Retrieve_Information, chars.characterContainer);
                     loop = proceed();
                     break;
 
