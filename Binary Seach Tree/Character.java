@@ -26,7 +26,7 @@ public class Character {
             {"4 Star", "Abundance", "Fire", "Penacony"},
             {"5 Star", "Preservation", "Ice", "Belobog"},
             {"4 Star", "Nihility", "Fire", "The Xianzhou Loufu"},
-            {"4 Star", "Harmony", "Physical", "Xianzhou Loufu"},
+            {"4 Star", "Harmony", "Physical", "The Xianzhou Loufu"},
             {"4 Star", "Erudition", "Ice", "Herta Space Station"},
             {"5 Star", "Erudition", "Fire", "Astral Express"},
             {"4 Star", "Destruction", "Fire", "Belobog"},
