@@ -72,7 +72,7 @@ public class Main extends Methods {
                         // Goes through the character container and if it matches, it will display the character information
                         if (chars.characterContainer[i].equalsIgnoreCase(name)) {
                             System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
-                            printCharacterInfo(chars.characterContainer[i], chars.characterInformation[i]);
+                            printCharacterInfo(chars.characterContainer[i], chars.characterInformation[i], 0);
                         }
                     }
                     loop = proceed();
