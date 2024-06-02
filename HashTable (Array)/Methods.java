@@ -86,8 +86,7 @@ public class Methods{
         // Will print if the user chooses to exit the program
         if (input.equalsIgnoreCase("N")){
             System.out.println("Exiting...");
-            continueTheProgram = true;
-        }
+        } else continueTheProgram = true;
 
         return continueTheProgram;
     }
