@@ -15,11 +15,11 @@ public class Main extends Methods {
 
         Scanner scn = new Scanner(System.in);
 
-        System.out.println("Welcome to a Honkai Star Rail Database System");
+        System.out.println("\n== Welcome to a Honkai Star Rail Database System ==");
         boolean loop = true; // If the loop becomes false, the program will stop (Determined by he method proceed)
 
         while (loop) {
-            System.out.println("----------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nE: Filter Characters\nF: Display Information of a Chracter\nG: Sort Characters\nQ: Quit\n----------------------------------\nPlease enter an action you want to perform: ");
+            System.out.print("\n== List Of Actions ==\n- A: Get Rarity\n- B: Get Path\n- C: Get Element\n- D: Print all Characters\n- E: Filter Characters\n- F: Display Information of a Chracter\n- G: Sort Characters\n- Q: Quit\n\nPlease enter an action you want to perform: ");
 
             String action = "";
 
@@ -51,14 +51,16 @@ public class Main extends Methods {
 
                 // Printing all Characters
                 case "D":
-                    System.out.println("                                         || Printing Characters Information ||\n ");
+                    System.out.println("\n== Printing Characters Information ==\n ");
                     printAllCharacters(chars.characterContainer, chars.characterInformation);
                     loop = proceed();
                     break;
 
                 // Filtering
                 case "E":
-                    System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n");
+                    System.out.print("\n== Filter Characters By: ==\n- A: Alphabet\n- B: Element\n- C: Path\n- D: Faction\n- E: Rarity\n");
+
+                    System.out.print("\nFilter Characters by: ");
                     String filter = checkInput(scn, new String[]{"A","B","C","D","E"});
 
                     filter(scn, filter, chars.characterContainer, chars.characterInformation);
@@ -67,7 +69,7 @@ public class Main extends Methods {
 
                 // Displaying information of a character
                 case "F":
-                    System.out.println("Enter a charfacter name: ");
+                    System.out.print("Enter a character name: ");
                     String name = checkInput(scn, chars.characterContainer);
 
                     for (int i = 0; i < chars.characterContainer.length; i++){
@@ -76,8 +78,8 @@ public class Main extends Methods {
 
                         // Goes through the character container and if it matches, it will display the character information
                         if (chars.characterContainer[i].equalsIgnoreCase(name)){
-                            System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
-                            printCharacterInfo(chars.characterContainer[i], chars.characterInformation[i]);
+                            System.out.println("\nCharacter:            Rarity:               Path:                 Element:              Faction:");
+                            printCharacterInfo(chars.characterContainer[i], chars.characterInformation[i], 0);
                         }
                     }
                     loop = proceed();
@@ -85,7 +87,8 @@ public class Main extends Methods {
 
                 // Sorting Characters
                 case "G":
-                    System.out.print("Sort Characters By: \nA: Alphabet\nB: Rarity\nC: Path\nD: Element\nE: Faction\n");
+                    System.out.print("\n== Sort Characters Features ==\nA: Alphabet\nB: Rarity\nC: Path\nD: Element\nE: Faction\n");
+                    System.out.print("\nSort Characters By: ");
                     String sort = checkInput(scn, new String[]{"A","B","C","D","E"});
                     sortCharacters(sort, chars.characterContainer, chars.characterInformation);
                     loop = proceed();
@@ -99,6 +102,5 @@ public class Main extends Methods {
                     break;
             }
         }
-
     }
 }
