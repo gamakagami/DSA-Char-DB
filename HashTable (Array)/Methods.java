@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Scanner;
@@ -41,12 +42,13 @@ public class Methods{
     }
 
     // Method that prints the information of all characters
-    static void printAllCharacters(String[] characterContainer, String[][] characterInformation) {
+    static void printAllCharacters(Hashtable<String, String[]> Container) {
 
         System.out.println(header);
+        ArrayList<String> names = new ArrayList<>(Container.keySet()); // List containing the keys of the hashtable
 
-        for (int i = 0; i < characterContainer.length; i++) {
-            printCharacterInfo(characterContainer[i], characterInformation[i], i);
+        for (int i = 0; i < Container.size(); i++) {
+            printCharacterInfo(names.get(i), Container.get(names.get(i)), i); // Prints Character Information
         }
     }
 
@@ -118,22 +120,27 @@ public class Methods{
     }
 
     // Method to make the code more efficient, checking features by taking the option representing the index and filter string
-    static void filterBasics(String[] characterContainer, String[][] characterInformation, int feature, String filter){
+    static void filterBasics(Hashtable<String, String[]> Container, int feature, String filter){
 
         System.out.println("\n== Printing Characters ==\n" + header);
+        ArrayList<String> keys = new ArrayList<>(Container.keySet());
 
         int j = 0;
-        // For loop to check through the index of the arrays inside the character information array corresponding to the feature it is filtering by. If it is equivalent, will print the character information
-        for (int i = 0; i < characterContainer.length; i++) {
-            if (characterInformation[i][feature].equalsIgnoreCase(filter) || characterInformation[i][feature].replace(" ", "").equalsIgnoreCase(filter)) {
-                printCharacterInfo(characterContainer[i], characterInformation[i], j); // Prints Info
+        // For loop to check through the value of the hashtable, which is an array. It checks through the feature it is filtering by (using the index). If it is equivalent, will print the character information
+        for (int i = 0; i < Container.size(); i++) {
+
+            String data = Container.get(keys.get(i))[feature]; // Represents the feature of the character
+            if (data.equalsIgnoreCase(filter) || data.replace(" ", "").equalsIgnoreCase(filter)) {
+                printCharacterInfo(keys.get(i), Container.get(keys.get(i)), j); // Prints Info
                 j += 1;
             }
         }
     }
 
-    // Method that filters based on the input taken, taking in the character container and information
-    static void filter(Scanner scn, String input, String[] characterContainer, String[][] characterInformation){
+    // Method that filters based on the input taken, taking in the Hashtable
+    static void filter(Scanner scn, String input, Hashtable<String, String[]> Container){
+
+        ArrayList<String> keys = new ArrayList<>(Container.keySet());
 
         switch(input.toUpperCase()) {
 
@@ -147,9 +154,9 @@ public class Methods{
 
                 int i = 0;
                 // Checks if the alphabet of each character is the same with the input entered, if it is the same, will display the character information
-                for (String s : characterContainer){
+                for (String s : Container.keySet()){
                     if (String.valueOf(s.charAt(0)).equalsIgnoreCase(alphabet)){
-                        printCharacterInfo(s, characterInformation[Arrays.asList(characterContainer).indexOf(s)], i); // Finds the index of the character name, and puts the character information array as an input to the method
+                        printCharacterInfo(s, Container.get(keys.get(i)), i); // Finds the index of the character name, and puts the character information array as an input to the method
                         i += 1;
                     }
                 }
@@ -160,7 +167,7 @@ public class Methods{
                 System.out.print("Please enter an element to filter by (Fire, Ice, Lightning, Physical, Wind, Quantum, Imaginary, Adaptive): ");
                 String element = checkInput(scn, new String[]{"Fire", "Ice", "Lightning", "Physical", "Wind", "Quantum", "Imaginary", "Adaptive"}); // Ensures that the element entered is valid
 
-                filterBasics(characterContainer, characterInformation, 2, element);
+                filterBasics(Container, 2, element);
 
                 break;
 
@@ -169,7 +176,7 @@ public class Methods{
                 System.out.print("Please enter a path to filter by (Nihility, Erudition, Destruction, Harmony, The Hunt, Preservation, Abundance, Adaptive): ");
                 String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "TheHunt", "Preservation", "Abundance", "Adaptive"}); // Ensure input is valid
 
-                filterBasics(characterContainer, characterInformation, 1, path);
+                filterBasics(Container, 1, path);
                 break;
 
             // Filters by the faction
@@ -177,7 +184,7 @@ public class Methods{
                 System.out.print("Please enter a faction to filter by (Herta Space Station, IPC, The Xianzhou Loufu, Stellaron Hunter, Belobog, Astral Express, Intelligentsia Guild, Penacony, Masked Fools): ");
                 String faction = checkInput(scn, new String[]{"HertaSpaceStation", "IPC", "TheXianzhouLoufu", "StellaronHunter", "Belobog", "AstralExpress", "IntelligentsiaGuild", "Penacony", "MaskedFools"});
 
-                filterBasics(characterContainer, characterInformation, 3, faction);
+                filterBasics(Container, 3, faction);
                 break;
 
             // Filters by Rarity
@@ -185,24 +192,27 @@ public class Methods{
                 System.out.print("Please enter a rarity to filter by (4 Star, 5 Star): ");
                 String rarity = checkInput(scn, new String[]{"4Star", "5Star"}); // Ensure Input is valid
 
-                filterBasics(characterContainer, characterInformation, 0, rarity);
+                filterBasics(Container, 0, rarity);
                 break;
         }
     }
 
     // Sorting basic Method, where the feature indicates what index of the character information will be checked, and the elements representing the order of printing
-    static void sortBasic(String[] characters, String[][] characterInfo, String[] elements, int feature){
+    static void sortBasic(Hashtable<String, String[]> Container, String[] elements, int feature){
 
         int k = 0;
         System.out.println("\n== Printing Characters ==\n\n" + header);
+        ArrayList<String> keys = new ArrayList<>(Container.keySet());
 
         // Goes through each element and compares them (by order)
         for (int i = 0; i < elements.length; i++){
 
-            for (int j = 0; j < characters.length; j++){
+            for (int j = 0; j < Container.size(); j++){
+
+                String data = Container.get(keys.get(j))[feature]; // Data representing the feature of each character
                 // Checks if the feature is equal
-                if (characterInfo[j][feature].equalsIgnoreCase(elements[i])){
-                    printCharacterInfo(characters[j], characterInfo[j], k); // Prints Info
+                if (data.equalsIgnoreCase(elements[i])){
+                    printCharacterInfo(keys.get(j), Container.get(keys.get(j)), k); // Prints Info
                     k += 1;
                 }
             }
@@ -211,35 +221,35 @@ public class Methods{
     }
 
     // Method that uses the sort basics method, changing the feature and the array of order
-    static void sortCharacters(String sort, String[] characters, String[][] characterInfo){
+    static void sortCharacters(String sort, Hashtable<String, String[]> Container){
 
         switch (sort.toUpperCase()){
 
             // Sorting by alphabet will be the same as printing the characters
             case "A":
                 System.out.println(" ");
-                printAllCharacters(characters, characterInfo);
+                printAllCharacters(Container);
                 break;
 
 
             case "B":
                 String[] rarity = {"4 Star", "5 Star"}; // Order of Printing
-                sortBasic(characters, characterInfo, rarity, 0); // 0 is the index of the rarity in the array
+                sortBasic(Container, rarity, 0); // 0 is the index of the rarity in the array
                 break;
 
             case "C":
-                String[] paths = {"Abundance", "Destruction","Euridition","Harmony","Nihility", "Preservation", "The Hunt"}; // Order pf Printing
-                sortBasic(characters, characterInfo, paths, 1); // 1 is the index of the path in the array
+                String[] paths = {"Abundance", "Destruction","Erudition","Harmony","Nihility", "Preservation", "The Hunt"}; // Order pf Printing
+                sortBasic(Container, paths, 1); // 1 is the index of the path in the array
                 break;
 
             case "D":
                 String[] elements = {"Fire","Ice","Imaginary","Lightning", "Physical", "Quantum", "Wind"}; // Order of Printing
-                sortBasic(characters, characterInfo, elements, 2); // 2 is the index of the elements in the array
+                sortBasic(Container, elements, 2); // 2 is the index of the elements in the array
                 break;
 
             case "E":
                 String[] factions = {"Astral Express","Belobog","Garden of Recollection","Herta Space Station","Intelligentsia Guild","IPC","Knight of Beauty","Masked Fools","Penacony","Self Anihilator", "Stellaron Hunter" ,"The Xianzhou Loufu"}; // Order of Printing
-                sortBasic(characters, characterInfo, factions, 3); // 3 is the index of the faction in the array
+                sortBasic(Container, factions, 3); // 3 is the index of the faction in the array
                 break;
         }
     }
