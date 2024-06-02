@@ -31,13 +31,9 @@ public class Methods{
     // Method that ensures the character entered is valid
     static String getCharacter(Scanner scn, String[] Characters) {
 
-        boolean present = false;
-        String Char = "";
-
         System.out.println("Please Enter a Character Name: ");
-        Char = checkInput(scn, Characters);
 
-        return Char; // Returns the valid character name
+        return checkInput(scn, Characters); // Returns the valid character name
     }
 
     // Method that prints the information of all characters
