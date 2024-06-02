@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Scanner;
 
-public class Methods {
+public class Methods{
 
     // Used to get the rarity, path, and the element of a character
     static void getInfo(String Character, Hashtable<String, String[]> Information, Integer Option) {
@@ -12,19 +12,16 @@ public class Methods {
 
         switch (Option) {
             case 0:
-
                 // The index 0 in the array represents the rarity of the character
                 System.out.println(Character + " is a " + Info[Option] + " character.");
                 break;
 
             case 1:
-
                 // The index 1 in the array represents the path of the character
                 System.out.println(Character + " is a " + Info[Option] + " path character.");
                 break;
 
             case 2:
-
                 // The index 2 in the array represents the element of the character
                 System.out.println(Character + "'s element is " + Info[Option] + ".");
                 break;
@@ -38,23 +35,8 @@ public class Methods {
         String Char = "";
 
         System.out.println("Please Enter a Character Name: ");
+        Char = checkInput(scn, Characters);
 
-        while (!present) {
-            Char = scn.nextLine();
-            Char = Char.replace(" ", "");
-
-            /* Goes through the character storage, if the string entered is equal to one of the character name,
-               it will stop. Otherwise, it will continue to loop until it receives a valid name */
-            for (String i : Characters) {
-                if (i.equalsIgnoreCase(Char)) {
-                    present = true;
-                    break;
-                }
-            }
-            if (!present) {
-                System.out.println("Please enter a valid Character");
-            }
-        }
         return Char; // Returns the valid character name
     }
 
@@ -97,57 +79,54 @@ public class Methods {
 
         System.out.println("Would you like to Continue? (Y/N)");
         Scanner scn = new Scanner(System.in);
-        boolean loop = true; // To loop until input is valid
         boolean continueTheProgram = false;
 
-        while (loop) {
-            String proceed = scn.nextLine();
-            if (proceed.equalsIgnoreCase("Y")) { // If user enters Y, the program will continue
-                continueTheProgram = true;
-                loop = false;
-
-            } else if (proceed.equalsIgnoreCase("N")) { // If the user enters N, the program will stop
-                loop = false;
-            }
-
-            if (loop) {
-                System.out.print("Please enter Y or N "); // Will continue to loop until receives input Y or N
-            }
-        }
+        String input = checkInput(scn, new String[]{"Y", "N"});
 
         // Will print if the user chooses to exit the program
-        if (!continueTheProgram) {
+        if (input.equalsIgnoreCase("N")){
             System.out.println("Exiting...");
+            continueTheProgram = true;
         }
 
         return continueTheProgram;
     }
 
     // A method that takes in scanner and an array if targetActions representing the input wanted
-    static String checkInput(Scanner scn, String[] targetActions) {
+    static String checkInput(Scanner scn, String[] target) {
 
         boolean action_present = false;
         String action = "";
 
         while (!action_present) {
             action = scn.nextLine();
+            action.replace(" ", "");
 
             // Checking if the user input is equal to any of the target inputs
-            for (String targetAction : targetActions) {
+            for (String targetInput : target) {
 
-                if (action.equalsIgnoreCase(targetAction)) {
+                if (action.equalsIgnoreCase(targetInput)) {
                     action_present = true; // Stopping the loop
                     break;
                 }
             }
 
             if (!action_present) {
-                System.out.println("Please enter a valid action");
+                System.out.println("Please enter a valid input");
             }
         }
         return action; // Returns the valid action
     }
 
+    // Method to make the code more efficient, checking features by taking the option representing the index and filter string
+    static void filterBasics(String[] characterContainer, String[][] characterInformation, int feature, String filter){
+
+        for (int i = 0; i < characterContainer.length; i++) {
+            if (characterInformation[i][feature].equalsIgnoreCase(filter)) {
+                printCharacterInfo(characterContainer[i], characterInformation[i]); // Prints Info
+            }
+        }
+    }
 
     // Method that filters based on the input taken, taking in the character container and information
     static void filter(Scanner scn, String input, String[] characterContainer, String[][] characterInformation){
@@ -177,11 +156,8 @@ public class Methods {
                 System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
 
                 // For loop to check through index 2 (element) of the arrays inside the character information array. If it is equivalent, will print the character information
-                for (int i = 0; i < characterContainer.length; i++) {
-                    if (characterInformation[i][2].equalsIgnoreCase(element)) {
-                        printCharacterInfo(characterContainer[i], characterInformation[i]); // Prints Info
-                    }
-                }
+                filterBasics(characterContainer, characterInformation, 2, element);
+
                 break;
 
             // Filters by the path
@@ -191,11 +167,7 @@ public class Methods {
                 System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
 
                 // For loop to check through index 1 (path) of the arrays inside the character information array. If it is equivalent, will print the character information
-                for (int i = 0; i < characterContainer.length; i++) {
-                    if (characterInformation[i][1].equalsIgnoreCase(path)) {
-                        printCharacterInfo(characterContainer[i], characterInformation[i]); // Prints Info
-                    }
-                }
+                filterBasics(characterContainer, characterInformation, 1, path);
                 break;
 
             // Filters by the faction
@@ -205,11 +177,7 @@ public class Methods {
                 System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
 
                 // For loop to check through index 3 (faction) of the arrays inside the character information array. If it is equivalent, will print the character information
-                for (int i = 0; i < characterContainer.length; i++) {
-                    if (characterInformation[i][3].equalsIgnoreCase(faction)) {
-                        printCharacterInfo(characterContainer[i], characterInformation[i]); // Prints Info
-                    }
-                }
+                filterBasics(characterContainer, characterInformation, 3, faction);
                 break;
 
             // Filters by Rarity
@@ -219,11 +187,7 @@ public class Methods {
                 System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
 
                 // For loop to check through index 0 (rarity) of the arrays inside the character information array. If it is equivalent, will print the character information
-                for (int i = 0; i < characterContainer.length; i++) {
-                    if (characterInformation[i][0].equalsIgnoreCase(rarity)) {
-                        printCharacterInfo(characterContainer[i], characterInformation[i]); // Prints Info
-                    }
-                }
+                filterBasics(characterContainer, characterInformation, 0, rarity);
                 break;
         }
     }
