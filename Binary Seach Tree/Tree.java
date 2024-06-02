@@ -49,5 +49,9 @@ public class Tree {
         System.out.println(x.key + " : " + String.join(", ", x.value));
         printInOrder(x.right);
     }
-}
 
+    public String normalizeKey(String key) {
+        if (key == null || key.isEmpty()) return key;
+        return key.substring(0, 1).toUpperCase() + key.substring(1).toLowerCase();
+    }
+}
