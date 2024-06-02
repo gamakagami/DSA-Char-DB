@@ -116,6 +116,7 @@ public class Methods{
     // Method to make the code more efficient, checking features by taking the option representing the index and filter string
     static void filterBasics(String[] characterContainer, String[][] characterInformation, int feature, String filter){
 
+        // For loop to check through the index of the arrays inside the character information array corresponding to the feature it is filtering by. If it is equivalent, will print the character information
         for (int i = 0; i < characterContainer.length; i++) {
             if (characterInformation[i][feature].equalsIgnoreCase(filter)) {
                 printCharacterInfo(characterContainer[i], characterInformation[i]); // Prints Info
@@ -150,7 +151,6 @@ public class Methods{
                 String element = checkInput(scn, new String[]{"Fire", "Ice", "Lightning", "Physical", "Wind", "Quantum", "Imaginary", "Adaptive"}); // Ensures that the element entered is valid
                 System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
 
-                // For loop to check through index 2 (element) of the arrays inside the character information array. If it is equivalent, will print the character information
                 filterBasics(characterContainer, characterInformation, 2, element);
 
                 break;
@@ -161,7 +161,6 @@ public class Methods{
                 String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "The Hunt", "Preservation", "Abundance", "Adaptive"}); // Ensure input is valid
                 System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
 
-                // For loop to check through index 1 (path) of the arrays inside the character information array. If it is equivalent, will print the character information
                 filterBasics(characterContainer, characterInformation, 1, path);
                 break;
 
@@ -171,7 +170,6 @@ public class Methods{
                 String faction = checkInput(scn, new String[]{"Herta Space Station", "IPC", "The Xianzhou Loufu", "Stellaron Hunter", "Belobog", "Astral Express", "Intelligentsia Guild", "Penacony", "Masked Fools"});
                 System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
 
-                // For loop to check through index 3 (faction) of the arrays inside the character information array. If it is equivalent, will print the character information
                 filterBasics(characterContainer, characterInformation, 3, faction);
                 break;
 
@@ -181,7 +179,6 @@ public class Methods{
                 String rarity = checkInput(scn, new String[]{"4 Star", "5 Star"}); // Ensure Input is valid
                 System.out.println("Character:          Rarity:             Path:               Element:            Faction:");
 
-                // For loop to check through index 0 (rarity) of the arrays inside the character information array. If it is equivalent, will print the character information
                 filterBasics(characterContainer, characterInformation, 0, rarity);
                 break;
         }
