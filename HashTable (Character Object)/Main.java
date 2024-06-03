@@ -3,7 +3,7 @@ import java.util.*;
 public class Main extends Methods {
 
     public static void main(String[] args) {
-        Hashtable<String, Character> Retrieve_Information = new Hashtable<>(48);
+        Hashtable<String, Character> Retrieve_Information = new Hashtable<>(48); //information 
         Retrieve_Information.put("Acheron", new Character("Acheron", "5 Star", "Nihility", "Lightning", "Self Annihilator"));
         Retrieve_Information.put("Argenti", new Character("Argenti", "5 Star", "Erudition", "Physical", "Knights of Beauty"));
         Retrieve_Information.put("Arlan", new Character("Arlan", "4 Star", "Destruction", "Lightning", "Herta Space Station"));
@@ -66,39 +66,39 @@ public class Main extends Methods {
 
             switch (action.toUpperCase()) {
                 case "A":
-                    String character = getCharacter(scn, Retrieve_Information);
+                    String character = getCharacter(scn, Retrieve_Information); //rarity
                     getInfo(character, Retrieve_Information, 0);
                     loop = proceed();
                     break;
 
                 case "B":
-                    character = getCharacter(scn, Retrieve_Information);
+                    character = getCharacter(scn, Retrieve_Information);//path
                     getInfo(character, Retrieve_Information, 1);
                     loop = proceed();
                     break;
 
                 case "C":
-                    character = getCharacter(scn, Retrieve_Information);
+                    character = getCharacter(scn, Retrieve_Information);//element
                     getInfo(character, Retrieve_Information, 2);
                     loop = proceed();
                     break;
 
                 case "D":
-                    System.out.println("|| Printing Characters Information ||\n ");
+                    System.out.println("|| Printing Characters Information ||\n "); //print all information
                     Retrieve_Information.values().stream()
                             .sorted(Comparator.comparing(Character::getName))
                             .forEach(Methods::printCharacterDetails);
                     loop = proceed();
                     break;
                 case "E":
-                    System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n");
+                    System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n"); //filters
                     String filter = checkInput(scn, new String[]{"A", "B", "C", "D", "E"});
                     filter(scn, filter, Retrieve_Information);
                     loop = proceed();
                     break;
 
                 case "F":
-                    System.out.print("Enter a character name: ");
+                    System.out.print("Enter a character name: "); //display one character information
                     String characterName = scn.nextLine().trim();
                     Character Character = Retrieve_Information.get(characterName);
 
@@ -111,8 +111,8 @@ public class Main extends Methods {
                     loop = proceed();
                     break;
 
-                case "G":
-                    System.out.print("\n== Sort Characters Features ==\nA: Alphabet\nB: Rarity\nC: Path\nD: Element\nE: Faction\n");
+                case "G": 
+                    System.out.print("\n== Sort Characters Features ==\nA: Alphabet\nB: Rarity\nC: Path\nD: Element\nE: Faction\n"); //sort info
                     System.out.print("\nSort Characters By: ");
                     String sort = checkInput(scn, new String[]{"A", "B", "C", "D", "E"});
                     sortCharacters(sort, Retrieve_Information);
@@ -120,7 +120,7 @@ public class Main extends Methods {
                     break;
 
 
-                case "Q":
+                case "Q": //quit program
                     System.out.println("Quitting program..");
                     loop = false;
                     break;
