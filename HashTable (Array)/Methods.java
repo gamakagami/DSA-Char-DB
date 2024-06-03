@@ -161,8 +161,8 @@ public class Methods{
 
             // Filters by the element
             case "B":
-                System.out.print("Please enter an element to filter by (Fire, Ice, Lightning, Physical, Wind, Quantum, Imaginary, Adaptive): ");
-                String element = checkInput(scn, new String[]{"Fire", "Ice", "Lightning", "Physical", "Wind", "Quantum", "Imaginary", "Adaptive"}); // Ensures that the element entered is valid
+                System.out.print("Please enter an element to filter by (Adaptive, Fire, Ice, Lightning, Physical, Wind, Quantum, Imaginary, Adaptive): ");
+                String element = checkInput(scn, new String[]{"Adaptive","Fire", "Ice", "Lightning", "Physical", "Wind", "Quantum", "Imaginary", "Adaptive"}); // Ensures that the element entered is valid
 
                 filterBasics(Container, 2, element, characterContainer);
 
@@ -170,8 +170,8 @@ public class Methods{
 
             // Filters by the path
             case "C":
-                System.out.print("Please enter a path to filter by (Nihility, Erudition, Destruction, Harmony, The Hunt, Preservation, Abundance, Adaptive): ");
-                String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "TheHunt", "Preservation", "Abundance", "Adaptive"}); // Ensure input is valid
+                System.out.print("Please enter a path to filter by (Adaptive, Nihility, Erudition, Destruction, Harmony, The Hunt, Preservation, Abundance, Adaptive): ");
+                String path = checkInput(scn, new String[]{"Adaptive","Nihility", "Erudition", "Destruction", "Harmony", "TheHunt", "Preservation", "Abundance", "Adaptive"}); // Ensure input is valid
 
                 filterBasics(Container, 1, path, characterContainer);
                 break;
@@ -205,10 +205,10 @@ public class Methods{
 
             for (int j = 0; j < Container.size(); j++){
 
-                String data = Container.get(characterContainer[i])[feature]; // Data representing the feature of each character
+                String data = Container.get(characterContainer[j])[feature]; // Data representing the feature of each character
                 // Checks if the feature is equal
                 if (data.equalsIgnoreCase(elements[i])){
-                    printCharacterInfo(characterContainer[i], Container.get(characterContainer[i]), k); // Prints Info
+                    printCharacterInfo(characterContainer[j], Container.get(characterContainer[j]), k); // Prints Info
                     k += 1;
                 }
             }
@@ -234,12 +234,12 @@ public class Methods{
                 break;
 
             case "C":
-                String[] paths = {"Abundance", "Destruction","Erudition","Harmony","Nihility", "Preservation", "The Hunt"}; // Order pf Printing
+                String[] paths = {"Abundance", "Adaptive", "Destruction","Erudition","Harmony","Nihility", "Preservation", "The Hunt"}; // Order pf Printing
                 sortBasic(Container, paths, 1, characterContainer); // 1 is the index of the path in the array
                 break;
 
             case "D":
-                String[] elements = {"Fire","Ice","Imaginary","Lightning", "Physical", "Quantum", "Wind"}; // Order of Printing
+                String[] elements = {"Adaptive","Fire","Ice","Imaginary","Lightning", "Physical", "Quantum", "Wind"}; // Order of Printing
                 sortBasic(Container, elements, 2, characterContainer); // 2 is the index of the elements in the array
                 break;
 
