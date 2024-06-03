@@ -85,10 +85,11 @@ public class Main extends Methods {
 
                 case "D":
                     System.out.println("|| Printing Characters Information ||\n ");
-                    printCharacterInfo(Retrieve_Information);
+                    Retrieve_Information.values().stream()
+                            .sorted(Comparator.comparing(Character::getName))
+                            .forEach(Methods::printCharacterDetails);
                     loop = proceed();
                     break;
-
                 case "E":
                     System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n");
                     String filter = checkInput(scn, new String[]{"A", "B", "C", "D", "E"});
@@ -99,11 +100,11 @@ public class Main extends Methods {
                 case "F":
                     System.out.print("Enter a character name: ");
                     String characterName = scn.nextLine().trim();
-                    Character character1 = Retrieve_Information.get(characterName);
+                    Character Character = Retrieve_Information.get(characterName);
 
-                    if (character1 != null) {
+                    if (Character != null) {
                         System.out.println("\nCharacter:            Rarity:               Path:                 Element:              Faction:");
-
+                        Methods.printCharacterDetails(Character);
                     } else {
                         System.out.println("Character not found.");
                     }
