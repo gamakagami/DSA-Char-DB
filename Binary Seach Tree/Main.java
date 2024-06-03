@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Methods2 {
+public class Main extends Methods {
     public static void main(String[] args) {
         Character chars = new Character();
 
