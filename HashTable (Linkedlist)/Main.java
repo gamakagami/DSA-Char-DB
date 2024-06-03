@@ -1,7 +1,11 @@
 import java.util.*;
-import java.io.*;
+
+// To know what the methods do, please refer to the Methods.java file.
 
 public class Main extends Methods {
+
+    public static Hashtable<String, LinkedList<String>> Retrieve_Information; // Make it public so it can be accessed from other classes
+
     public static void main(String[] args) {
 
         Character chars = new Character();
@@ -24,48 +28,57 @@ public class Main extends Methods {
 
             String action = "";
 
-            action = checkInput(scn, new String[]{"A", "B", "C", "D", "E", "F", "G", "Q"});
+            action = checkInput(scn, new String[]{"A", "B", "C", "D", "E", "F", "G", "Q"}); // To ensure user input is valid
 
+            // To perform different actions based on user input
             switch (action.toUpperCase()) {
+
+                // Getting Rarity
                 case "A":
                     String character = getCharacter(scn, chars.characterContainer);
                     getInfo(character, Retrieve_Information, 0);
                     loop = proceed();
                     break;
 
+                // Getting Path
                 case "B":
                     character = getCharacter(scn, chars.characterContainer);
                     getInfo(character, Retrieve_Information, 1);
                     loop = proceed();
                     break;
 
+                // Getting Element
                 case "C":
                     character = getCharacter(scn, chars.characterContainer);
                     getInfo(character, Retrieve_Information, 2);
                     loop = proceed();
                     break;
 
+                // Printing all Characters
                 case "D":
                     System.out.println("\n== Printing Characters Information ==\n ");
-                    printAllCharacters(chars.characterContainer, chars.characterInformation);
+                    printAllCharacters(Retrieve_Information, chars.characterContainer);
                     loop = proceed();
                     break;
 
+                // Filtering
                 case "E":
                     System.out.print("\n== Filter Characters By: ==\n- A: Alphabet\n- B: Element\n- C: Path\n- D: Faction\n- E: Rarity\n");
 
                     System.out.print("\nFilter Characters by: ");
-                    String filter = checkInput(scn, new String[]{"A", "B", "C", "D", "E"});
+                    String filter = checkInput(scn, new String[]{"A","B","C","D","E"});
 
-                    filter(scn, filter, chars.characterContainer, chars.characterInformation);
+                    filter(scn, filter, Retrieve_Information, chars.characterContainer);
                     loop = proceed();
                     break;
 
+                // Displaying information of a character
                 case "F":
                     System.out.print("Enter a character name: ");
                     String name = checkInput(scn, chars.characterContainer.toArray(new String[0]));
 
-                    for (int i = 0; i < chars.characterContainer.size(); i++) {
+                    for (int i = 0; i < chars.characterContainer.size(); i++){
+
                         name = name.replace(" ",""); // To ensure no error happens due to space
 
                         // Goes through the character container and if it matches, it will display the character information
@@ -77,14 +90,17 @@ public class Main extends Methods {
                     loop = proceed();
                     break;
 
+                // Sorting Characters
                 case "G":
                     System.out.print("\n== Sort Characters Features ==\nA: Alphabet\nB: Rarity\nC: Path\nD: Element\nE: Faction\n");
                     System.out.print("\nSort Characters By: ");
-                    String sort = checkInput(scn, new String[]{"A", "B", "C", "D", "E"});
-                    sortCharacters(sort, chars.characterContainer, chars.characterInformation);
+                    String sort = checkInput(scn, new String[]{"A","B","C","D","E"});
+                    sortCharacters(sort, Retrieve_Information, chars.characterContainer);
                     loop = proceed();
                     break;
 
+
+                // Quitting program
                 case "Q":
                     System.out.println("Quitting program..");
                     loop = false;
