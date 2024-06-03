@@ -54,11 +54,11 @@ public class Main extends Methods {
 
         Scanner scn = new Scanner(System.in);
 
-        System.out.println("Welcome to a Honkai Star Rail Database System");
+        System.out.println("\n== Welcome to a Honkai Star Rail Database System ==");
         boolean loop = true;
 
         while (loop) {
-            System.out.println("----------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nE: Filter Characters\nF: Display Information of a Character\nG: Sort Characters\nQ: Quit\nPlease enter an action you want to perform: ");
+            System.out.println("\n== List Of Actions ==\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nE: Filter Characters\nF: Display Information of a Character\nG: Sort Characters\nQ: Quit\nPlease enter an action you want to perform: ");
 
             String action = "";
 
