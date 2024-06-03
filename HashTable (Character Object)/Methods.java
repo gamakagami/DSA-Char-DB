@@ -1,7 +1,10 @@
 import java.util.Hashtable;
 import java.util.Scanner;
+import java.util.Comparator;
+
 
 public class Methods {
+    static String header = "Character:            Rarity:               Path:                 Element:              Faction:\n";
     static void getInfo(String character, Hashtable<String, Character> information, Integer option) {
         character = character.substring(0, 1).toUpperCase() + character.substring(1).toLowerCase();
 
@@ -95,95 +98,111 @@ public class Methods {
         switch (input.toUpperCase()) {
             case "A":
                 System.out.print("Please enter an alphabet to filter by: ");
-                String alphabet = checkInput(scn, new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"});
+                String alphabet = scn.nextLine().trim().substring(0, 1).toUpperCase();
                 System.out.println("\n");
 
-                for (Character character : container.values()) {
-                    if (character.name.substring(0, 1).equalsIgnoreCase(alphabet)) {
-                        System.out.println(character.name + ", " + character.rarity + ", " + character.path + ", " + character.element + ", " + character.faction);
-                    }
-                }
+                container.values().stream()
+                        .filter(character -> character.getName().toUpperCase().startsWith(alphabet))
+                        .sorted(Comparator.comparing(Character::getName))
+                        .forEach(Methods::printCharacterDetails);
                 break;
+
 
             case "B":
                 System.out.print("Please enter an element to filter by (Fire, Ice, Lightning, Physical, Wind, Quantum, Imaginary, Adaptive): ");
                 String element = checkInput(scn, new String[]{"Fire", "Ice", "Lightning", "Physical", "Wind", "Quantum", "Imaginary", "Adaptive"});
 
-                for (Character character : container.values()) {
-                    if (character.element.equalsIgnoreCase(element)) {
-                        System.out.println(character.name + ", " + character.rarity + ", " + character.path + ", " + character.element + ", " + character.faction);
-                    }
-                }
+                container.values().stream()
+                        .filter(character -> character.getElement().equalsIgnoreCase(element))
+                        .sorted(Comparator.comparing(Character::getName))
+                        .forEach(Methods::printCharacterDetails);
                 break;
 
             case "C":
                 System.out.print("Please enter a path to filter by (Nihility, Erudition, Destruction, Harmony, The Hunt, Preservation, Abundance, Adaptive): ");
                 String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "The Hunt", "Preservation", "Abundance", "Adaptive"});
 
-                for (Character character : container.values()) {
-                    if (character.path.equalsIgnoreCase(path)) {
-                        System.out.println(character.name + ", " + character.rarity + ", " + character.path + ", " + character.element + ", " + character.faction);
-                    }
-                }
+                container.values().stream()
+                        .filter(character -> character.getPath().equalsIgnoreCase(path))
+                        .sorted(Comparator.comparing(Character::getName))
+                        .forEach(Methods::printCharacterDetails);
                 break;
 
             case "D":
                 System.out.print("Please enter a faction to filter by (Herta Space Station, IPC, The Xianzhou Loufu, Stellaron Hunter, Belobog, Astral Express, Intelligentsia Guild, Penacony, Masked Fools): ");
                 String faction = checkInput(scn, new String[]{"Herta Space Station", "IPC", "The Xianzhou Loufu", "Stellaron Hunter", "Belobog", "Astral Express", "Intelligentsia Guild", "Penacony", "Masked Fools"});
 
-                for (Character character : container.values()) {
-                    if (character.faction.replace(" ", "").equalsIgnoreCase(faction)) {
-                        System.out.println(character.name + ", " + character.rarity + ", " + character.path + ", " + character.element + ", " + character.faction);
-                    }
-                }
+                container.values().stream()
+                        .filter(character -> character.getFaction().equalsIgnoreCase(faction))
+                        .sorted(Comparator.comparing(Character::getName))
+                        .forEach(Methods::printCharacterDetails);
                 break;
 
             case "E":
                 System.out.print("Please enter a rarity to filter by (4 Star, 5 Star): ");
                 String rarity = checkInput(scn, new String[]{"4 Star", "5 Star"});
 
-                for (Character character : container.values()) {
-                    if (character.rarity.equalsIgnoreCase(rarity)) {
-                        System.out.println(character.name + ", " + character.rarity + ", " + character.path + ", " + character.element + ", " + character.faction);
-                    }
-                }
+                container.values().stream()
+                        .filter(character -> character.getRarity().equalsIgnoreCase(rarity))
+                        .sorted(Comparator.comparing(Character::getName))
+                        .forEach(Methods::printCharacterDetails);
                 break;
         }
     }
 
-            static void printCharacterDetails(Character character) {
-                System.out.println(character.name + ", " + character.rarity + ", " + character.path + ", " + character.element + ", " + character.faction);
-            }
-                static void sortCharacters (String sort, Hashtable < String, Character > character){
-                    switch (sort.toUpperCase()) {
-                        case "A":
-                            System.out.println("\n== Printing Characters in Alphabetical Order ==\n");
-                            character.keySet().stream().sorted().forEach(key -> character.get(key));
-                            break;
+    static void printCharacterDetails(Character character) {
+        System.out.println(character.name + ", " + character.rarity + ", " + character.path + ", " + character.element + ", " + character.faction);
+    }
 
+    static void sortCharacters(String sort, Hashtable<String, Character> character) {
+        switch (sort.toUpperCase()) {
+            case "A":
+                System.out.println("\n== Printing Characters in Alphabetical Order ==\n");
+                character.keySet().stream()
+                        .sorted()
+                        .map(character::get) // Get the character object based on the key
+                        .forEach(Methods::printCharacterDetails); // Print the details of each character
+                break;
 
-                        case "B":
-                            System.out.println("\n== Printing Characters by Rarity ==\n");
-                            character.values().stream().sorted((c1, c2) -> c1.rarity.compareTo(c2.rarity)).forEach(Methods::printCharacterDetails);
-                            break;
-
-                        case "C":
-                            System.out.println("\n== Printing Characters by Path ==\n");
-                            character.values().stream().sorted((c1, c2) -> c1.path.compareTo(c2.path)).forEach(Methods::printCharacterDetails);
-                            break;
-
-                        case "D":
-                            System.out.println("\n== Printing Characters by Element ==\n");
-                            character.values().stream().sorted((c1, c2) -> c1.element.compareTo(c2.element)).forEach(Methods::printCharacterDetails);
-                            break;
-
-                        case "E":
-                            System.out.println("\n== Printing Characters by Faction ==\n");
-                            character.values().stream().sorted((c1, c2) -> c1.faction.compareTo(c2.faction)).forEach(Methods::printCharacterDetails);
-                            break;
-
-                    }
-                }
-
+            case "B":
+                System.out.println("\n== Print Characters by Rarity ==\n");
+                character.values().stream()
+                        .sorted(Comparator.comparing(Character::getRarity))
+                        .forEach(Character -> {
+                            Methods.printCharacterDetails(Character);
+                            System.out.println(); // Add a line break after each character's details
+                        });
+                break;
+            case "C":
+                System.out.println("\n== Printing Characters by Path ==\n");
+                character.values().stream()
+                        .sorted(Comparator.comparing(Character::getPath))
+                        .forEach(Character -> {
+                            Methods.printCharacterDetails(Character);
+                            System.out.println(); // Add a line break after each character's details
+                        });
+                break;
+            case "D":
+                System.out.println("\n== Printing Characters by Element ==\n");
+                character.values().stream()
+                        .sorted(Comparator.comparing(Character::getElement))
+                        .forEach(Character -> {
+                            Methods.printCharacterDetails(Character);
+                            System.out.println(); // Add a line break after each character's details
+                        });
+                break;
+            case "E":
+                System.out.println("\n== Printing Characters by Faction ==\n");
+                character.values().stream()
+                        .sorted(Comparator.comparing(Character::getFaction).thenComparing(Character::getName)) // Sort by faction, then by name
+                        .forEach(Character -> {
+                            Methods.printCharacterDetails(Character);
+                            System.out.println(); // Add a line break after each character's details
+                        });
+                break;
         }
+    }
+}
+
+
 
