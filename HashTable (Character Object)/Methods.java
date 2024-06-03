@@ -154,33 +154,36 @@ public class Methods {
             static void printCharacterDetails(Character character) {
                 System.out.println(character.name + ", " + character.rarity + ", " + character.path + ", " + character.element + ", " + character.faction);
             }
-            static void sortCharacters(String sort, Hashtable <String, Character> container) {
-                switch (sort.toUpperCase()) {
-                    case "A":
-                        System.out.println("\n== Printing Characters in Alphabetical Order ==\n");
-                        container.keySet().stream().sorted().forEach(key -> printCharacterInfo(container));
-                        break;
+                static void sortCharacters (String sort, Hashtable < String, Character > character){
+                    switch (sort.toUpperCase()) {
+                        case "A":
+                            System.out.println("\n== Printing Characters in Alphabetical Order ==\n");
+                            character.keySet().stream().sorted().forEach(key -> character.get(key));
+                            break;
 
-                    case "B":
-                        System.out.println("\n== Printing Characters by Rarity ==\n");
-                        container.values().stream().sorted((c1, c2) -> c1.rarity.compareTo(c2.rarity)).forEach(Methods::printCharacterDetails);
-                        break;
 
-                    case "C":
-                        System.out.println("\n== Printing Characters by Path ==\n");
-                        container.values().stream().sorted((c1, c2) -> c1.path.compareTo(c2.path)).forEach(Methods::printCharacterDetails);
-                        break;
+                        case "B":
+                            System.out.println("\n== Printing Characters by Rarity ==\n");
+                            character.values().stream().sorted((c1, c2) -> c1.rarity.compareTo(c2.rarity)).forEach(Methods::printCharacterDetails);
+                            break;
 
-                    case "D":
-                        System.out.println("\n== Printing Characters by Element ==\n");
-                        container.values().stream().sorted((c1, c2) -> c1.element.compareTo(c2.element)).forEach(Methods::printCharacterDetails);
-                        break;
+                        case "C":
+                            System.out.println("\n== Printing Characters by Path ==\n");
+                            character.values().stream().sorted((c1, c2) -> c1.path.compareTo(c2.path)).forEach(Methods::printCharacterDetails);
+                            break;
 
-                    case "E":
-                        System.out.println("\n== Printing Characters by Faction ==\n");
-                        container.values().stream().sorted((c1, c2) -> c1.faction.compareTo(c2.faction)).forEach(Methods::printCharacterDetails);
-                        break;
+                        case "D":
+                            System.out.println("\n== Printing Characters by Element ==\n");
+                            character.values().stream().sorted((c1, c2) -> c1.element.compareTo(c2.element)).forEach(Methods::printCharacterDetails);
+                            break;
+
+                        case "E":
+                            System.out.println("\n== Printing Characters by Faction ==\n");
+                            character.values().stream().sorted((c1, c2) -> c1.faction.compareTo(c2.faction)).forEach(Methods::printCharacterDetails);
+                            break;
+
+                    }
                 }
-            }
+
         }
 
