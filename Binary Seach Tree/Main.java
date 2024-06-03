@@ -55,8 +55,8 @@ public class Main extends Methods {
                 case "E":
                     System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n");
                     String filter = checkInput(scn, new String[]{"A", "B", "C", "D", "E"});
-
-                    filter(scn, filter, chars.characterContainer, chars.characterInformation);
+ 
+                    filter(scn, filter, Retrieve_Information, chars.characterContainer);
                     loop = proceed();
                     break;
 
