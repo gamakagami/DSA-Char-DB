@@ -5,8 +5,6 @@ public class Methods {
 
     // Header that is printed when printing characters
     static String header = "Character:              Rarity:                 Path:                   Element:                Faction:\n";
-
-
     public static void getInfo(String character, Tree tree, int infoIndex) {
         // Normalize the character name to match the tree's key format
         String normalizedCharacter = tree.normalizeKey(character);
@@ -36,7 +34,7 @@ public class Methods {
     // Method that ensures the character entered is valid
     public static String getCharacter(Scanner scn, String[] characterContainer) {
 
-        System.out.println("Please Enter a Character Name: ");
+        System.out.print("Please Enter a Character Name: ");
 
         return checkInput(scn, characterContainer); // Returns the valid character name
     }
@@ -44,7 +42,7 @@ public class Methods {
 
     // Method to print all characters
     public static void printAllCharacters(String[] characterContainer, String[][] characterInformation) {
-        System.out.println("Character:            Rarity:               Path:                 Element:              Faction:");
+        System.out.println(header);
         for (int i = 0; i < characterContainer.length; i++) {
             printCharacterInfo(characterContainer[i], characterInformation[i], i);
         }
@@ -75,7 +73,7 @@ public class Methods {
     // Method that requests user confirmation whether to continue or stop
     static boolean proceed() {
 
-        System.out.println("Would you like to Continue? (Y/N): ");
+        System.out.print("Would you like to Continue? (Y/N): ");
         Scanner scn = new Scanner(System.in);
         boolean continueTheProgram = false;
 
@@ -83,7 +81,7 @@ public class Methods {
 
         // Will print if the user chooses to exit the program
         if (input.equalsIgnoreCase("N")){
-            System.out.println("Exiting...");
+            System.out.println("\n== Exiting the Program ==");
         } else continueTheProgram = true;
 
         return continueTheProgram;
@@ -108,7 +106,7 @@ public class Methods {
             }
 
             if (!action_present) {
-                System.out.println("Please enter a valid input");
+                System.out.print("Please enter a valid input: ");
             }
         }
         return action; // Returns the valid action
