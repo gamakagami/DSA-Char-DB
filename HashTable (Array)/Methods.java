@@ -12,6 +12,7 @@ public class Methods{
     // Used to get the rarity, path, and the element of a character
     static void getInfo(String Character, Hashtable<String, String[]> Information, Integer Option) {
 
+        Character = Character.replace(" ", "");
         Character = Character.substring(0, 1).toUpperCase() + Character.substring(1).toLowerCase(); // To make the first letter capitalized and the rest to be lowercase, so it will match the hashtable keys
         String[] Info = Information.get(Character); // Receives the array of information regarding the character
 
