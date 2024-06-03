@@ -4,67 +4,43 @@ import java.util.Scanner;
 public class Methods {
 
     // Header that is printed when printing characters
-    static String header = "Character:            Rarity:               Path:                 Element:              Faction:\n";
+    static String header = "Character:              Rarity:                 Path:                   Element:                Faction:\n";
 
-    // Method to check if the input is valid
-    static String checkInput(Scanner scn, String[] target) {
 
-        boolean action_present = false;
-        String action = "";
+    public static void getInfo(String character, Tree tree, int infoIndex) {
+        // Normalize the character name to match the tree's key format
+        String normalizedCharacter = tree.normalizeKey(character);
+        // Retrieve the array of information about the character
+        String[] info = tree.get(normalizedCharacter);
 
-        while (!action_present) {
-            action = scn.nextLine();
-
-            // Checking if the user input is equal to any of the target inputs
-            for (String targetInput : target) {
-
-                if (action.equalsIgnoreCase(targetInput)) {
-                    action_present = true; // Stopping the loop
-                    break;
+        if (info != null) {
+            // Check if the infoIndex is within the bounds of the info array
+            if (infoIndex >= 0 && infoIndex < info.length) {
+                switch (infoIndex) {
+                    case 0:
+                        System.out.println("\n== " + normalizedCharacter + " is a " + info[infoIndex] + " Character ==");
+                        break;
+                    case 1:
+                        System.out.println("\n== " + normalizedCharacter + " is a " + info[infoIndex] + " Path Character ==");
+                        break;
+                    case 2:
+                        System.out.println("\n== " + normalizedCharacter + "'s element is " + info[infoIndex] + " ==");
+                        break;
+                    default:
+                        System.out.println("Invalid information index.");
                 }
             }
-
-            if (!action_present) {
-                System.out.println("Please enter a valid input");
-            }
         }
-        return action; // Returns the valid action
     }
 
-    // Method to get a character from user input
+    // Method that ensures the character entered is valid
     public static String getCharacter(Scanner scn, String[] characterContainer) {
-        System.out.println("Enter a character name: ");
-        return checkInput(scn, characterContainer);
+
+        System.out.println("Please Enter a Character Name: ");
+
+        return checkInput(scn, characterContainer); // Returns the valid character name
     }
 
-    // Method to get information about a character
-    public static void getInfo(String character, Tree tree, int infoIndex) {
-        String[] info = tree.get(tree.normalizeKey(character));
-        if (info != null) {
-            System.out.println("\n== " + character + " is a " + info[infoIndex] + " Character ==");
-        } else {
-            System.out.println("Character not found.");
-        }
-    }
-
-
-    // Method to proceed
-    // Method that requests user confirmation whether to continue or stop
-    static boolean proceed() {
-
-        System.out.println("Would you like to Continue? (Y/N)");
-        Scanner scn = new Scanner(System.in);
-        boolean continueTheProgram = false;
-
-        String input = checkInput(scn, new String[]{"Y", "N"});
-
-        // Will print if the user chooses to exit the program
-        if (input.equalsIgnoreCase("N")){
-            System.out.println("Exiting...");
-        } else continueTheProgram = true;
-
-        return continueTheProgram;
-    }
 
     // Method to print all characters
     public static void printAllCharacters(String[] characterContainer, String[][] characterInformation) {
@@ -94,6 +70,48 @@ public class Methods {
             }
         }
         System.out.println(info[3]); // Println to create space from the previous character
+    }
+
+    // Method that requests user confirmation whether to continue or stop
+    static boolean proceed() {
+
+        System.out.println("Would you like to Continue? (Y/N): ");
+        Scanner scn = new Scanner(System.in);
+        boolean continueTheProgram = false;
+
+        String input = checkInput(scn, new String[]{"Y", "N"});
+
+        // Will print if the user chooses to exit the program
+        if (input.equalsIgnoreCase("N")){
+            System.out.println("Exiting...");
+        } else continueTheProgram = true;
+
+        return continueTheProgram;
+    }
+
+    // Method to check if the input is valid
+    static String checkInput(Scanner scn, String[] target) {
+
+        boolean action_present = false;
+        String action = "";
+
+        while (!action_present) {
+            action = scn.nextLine();
+
+            // Checking if the user input is equal to any of the target inputs
+            for (String targetInput : target) {
+
+                if (action.equalsIgnoreCase(targetInput)) {
+                    action_present = true; // Stopping the loop
+                    break;
+                }
+            }
+
+            if (!action_present) {
+                System.out.println("Please enter a valid input");
+            }
+        }
+        return action; // Returns the valid action
     }
 
     // Method to make the code more efficient, checking features by taking the option representing the index and filter string
