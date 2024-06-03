@@ -139,7 +139,7 @@ public class Methods {
                 break;
 
             case "E":
-                System.out.print("Please enter a rarity to filter by (4 Star, 5 Star): ");
+                System.out.print("Please enter a rarity to filter by (4 Star, 5 Star): "); //filter 
                 String rarity = checkInput(scn, new String[]{"4 Star", "5 Star"});
 
                 container.values().stream()
@@ -157,7 +157,7 @@ public class Methods {
     static void sortCharacters(String sort, Hashtable<String, Character> character) {
         switch (sort.toUpperCase()) {
             case "A":
-                System.out.println("\n== Printing Characters in Alphabetical Order ==\n");
+                System.out.println("\n== Printing Characters in Alphabetical Order ==\n"); // sort by Alphabet
                 character.keySet().stream()
                         .sorted()
                         .map(character::get) // Get the character object based on the key
@@ -167,7 +167,7 @@ public class Methods {
             case "B":
                 System.out.println("\n== Print Characters by Rarity ==\n");
                 character.values().stream()
-                        .sorted(Comparator.comparing(Character::getRarity))
+                        .sorted(Comparator.comparing(Character::getRarity))// Sort by Rarity
                         .forEach(Character -> {
                             Methods.printCharacterDetails(Character);
                             System.out.println(); // Add a line break after each character's details
@@ -176,7 +176,7 @@ public class Methods {
             case "C":
                 System.out.println("\n== Printing Characters by Path ==\n");
                 character.values().stream()
-                        .sorted(Comparator.comparing(Character::getPath))
+                        .sorted(Comparator.comparing(Character::getPath))// Sort by path
                         .forEach(Character -> {
                             Methods.printCharacterDetails(Character);
                             System.out.println(); // Add a line break after each character's details
@@ -185,7 +185,7 @@ public class Methods {
             case "D":
                 System.out.println("\n== Printing Characters by Element ==\n");
                 character.values().stream()
-                        .sorted(Comparator.comparing(Character::getElement))
+                        .sorted(Comparator.comparing(Character::getElement)) // Sort by Element
                         .forEach(Character -> {
                             Methods.printCharacterDetails(Character);
                             System.out.println(); // Add a line break after each character's details
@@ -194,7 +194,7 @@ public class Methods {
             case "E":
                 System.out.println("\n== Printing Characters by Faction ==\n");
                 character.values().stream()
-                        .sorted(Comparator.comparing(Character::getFaction).thenComparing(Character::getName)) // Sort by faction, then by name
+                        .sorted(Comparator.comparing(Character::getFaction).thenComparing(Character::getName)) // Sort by faction
                         .forEach(Character -> {
                             Methods.printCharacterDetails(Character);
                             System.out.println(); // Add a line break after each character's details
