@@ -1,5 +1,4 @@
-import java.util.Hashtable;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main extends Methods {
 
@@ -8,7 +7,7 @@ public class Main extends Methods {
         Retrieve_Information.put("Acheron", new Character("Acheron", "5 Star", "Nihility", "Lightning", "Self Annihilator"));
         Retrieve_Information.put("Argenti", new Character("Argenti", "5 Star", "Erudition", "Physical", "Knights of Beauty"));
         Retrieve_Information.put("Arlan", new Character("Arlan", "4 Star", "Destruction", "Lightning", "Herta Space Station"));
-        Retrieve_Information.put("Asta", new Character("Asta", "Harmony", "Harmony", "Fire", "Herta Space Station"));
+        Retrieve_Information.put("Asta", new Character("Asta", "4 Star", "Harmony", "Fire", "Herta Space Station"));
         Retrieve_Information.put("Aventurine", new Character("Aventurine", "5 Star", "Preservation", "Imaginary", "IPC"));
         Retrieve_Information.put("Bailu", new Character("Bailu", "5 Star", "Abundance", "Lightning", "The Xianzhou Loufu"));
         Retrieve_Information.put("Blackswan", new Character("Blackswan", "5 Star", "Nihility", "Wind", "Garden of Recollection"));
@@ -52,18 +51,18 @@ public class Main extends Methods {
         Retrieve_Information.put("Xueyi ", new Character("Xueyi", "4 Star", "Destruction", "Quantum", "The Xianzhou Loufu"));
         Retrieve_Information.put("Yanqing ", new Character("Yangqing", "5 Star", "The Hunt", "Ice", "The Xianzhou Loufu"));
         Retrieve_Information.put("Yukong ", new Character("Yukong", "4 Star", "Harmony", "Imaginary", "The Xianzhou Loufu"));
+
         Scanner scn = new Scanner(System.in);
 
         System.out.println("Welcome to a Honkai Star Rail Database System");
         boolean loop = true;
 
         while (loop) {
-            System.out.println("----------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nE: Filter Characters\nF: Display Information of a Chracter\nQ: Quit\n----------------------------------\nPlease enter an action you want to perform: ");
+            System.out.println("----------------------------------\nA: Get Rarity\nB: Get Path\nC: Get Element\nD: Print all Characters\nE: Filter Characters\nF: Display Information of a Character\nG: Sort Characters\nQ: Quit\nPlease enter an action you want to perform: ");
 
-            boolean action_present = false;
             String action = "";
 
-            action = checkInput(scn, new String[]{"A", "B", "C", "D", "E", "F", "Q"});
+            action = checkInput(scn, new String[]{"A", "B", "C", "D", "E", "F", "G", "Q"});
 
             switch (action.toUpperCase()) {
                 case "A":
@@ -85,26 +84,28 @@ public class Main extends Methods {
                     break;
 
                 case "D":
-                    System.out.println("                                         || Printing Characters Information ||\n ");
+                    System.out.println("|| Printing Characters Information ||\n ");
                     printCharacterInfo(Retrieve_Information);
                     loop = proceed();
                     break;
 
                 case "E":
-                   System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n");
-                   String filter = checkInput(scn, new String[]{"A","B","C","D","E"});
-                   filter(scn, filter, Retrieve_Information);
-                   loop = proceed();
-                   break;
+                    System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n");
+                    String filter = checkInput(scn, new String[]{"A", "B", "C", "D", "E"});
+                    filter(scn, filter, Retrieve_Information);
+                    loop = proceed();
+                    break;
 
                 case "F":
                     System.out.print("Enter a character name: ");
                     String characterName = scn.nextLine().trim();
-                    Character Character = Retrieve_Information.get(characterName);
+                    Character character1 = Retrieve_Information.get(characterName);
 
-                    if (Character != null) {
+                    if (character1 != null) {
                         System.out.println("\nCharacter:            Rarity:               Path:                 Element:              Faction:");
-                        printCharacterInfo(Retrieve_Information);
+
+                    } else {
+                        System.out.println("Character not found.");
                     }
                     loop = proceed();
                     break;
@@ -120,9 +121,9 @@ public class Main extends Methods {
 
                 case "Q":
                     System.out.println("Quitting program..");
-                   loop = false;
+                    loop = false;
                     break;
-           }
+            }
         }
     }
 }
