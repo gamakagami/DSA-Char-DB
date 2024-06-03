@@ -98,7 +98,7 @@ public class Methods {
             // Checking if the user input is equal to any of the target inputs
             for (String targetInput : target) {
 
-                if (action.equalsIgnoreCase(targetInput)) {
+                if (action.equalsIgnoreCase(targetInput) || action.replace(" ", "").equalsIgnoreCase(targetInput)) {
                     action_present = true; // Stopping the loop
                     break;
                 }
@@ -119,7 +119,7 @@ public class Methods {
         // For loop to check through the characterContainer array and fetch the corresponding information from the tree
         for (String character : characterContainer) {
             String[] info = tree.get(tree.normalizeKey(character));
-            if (info != null && (info[feature].equalsIgnoreCase(filter) || info[feature].replace(" ", "").equalsIgnoreCase(filter))) {
+            if (info[feature].equalsIgnoreCase(filter) || info[feature].replace(" ", "").equalsIgnoreCase(filter)) {
                 printCharacterInfo(character, info, j); // Prints Info
                 j += 1;
             }
@@ -161,7 +161,7 @@ public class Methods {
             // Filters by the path
             case "C":
                 System.out.print("Please enter a path to filter by (Nihility, Erudition, Destruction, Harmony, The Hunt, Preservation, Abundance, Adaptive): ");
-                String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "The Hunt", "Preservation", "Abundance", "Adaptive"}); // Ensure input is valid
+                String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "TheHunt", "Preservation", "Abundance", "Adaptive"}); // Ensure input is valid
 
                 filterBasics(tree, characterContainer, 1, path);
                 break;
