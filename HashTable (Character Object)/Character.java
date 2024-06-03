@@ -7,8 +7,24 @@ public class Character{
         this.path = path;
         this.element = element;
         this.faction = faction;
+    }
+    public String getFaction() {
+        return faction;
+    }
+    public String getElement() {
+        return this.element;
+    }
 
+    public String getPath() {
+        return path;
+    }
 
+    public String getName() {
+        return name;
+
+    }
+    public String getRarity() {
+        return rarity;
     }
 }
 
