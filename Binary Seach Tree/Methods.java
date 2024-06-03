@@ -1,10 +1,10 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Methods {
 
     // Header that is printed when printing characters
     static String header = "Character:              Rarity:                 Path:                   Element:                Faction:\n";
+
     public static void getInfo(String character, Tree tree, int infoIndex) {
         // Normalize the character name to match the tree's key format
         String normalizedCharacter = tree.normalizeKey(character);
@@ -38,7 +38,6 @@ public class Methods {
 
         return checkInput(scn, characterContainer); // Returns the valid character name
     }
-
 
     // Method to print all characters
     public static void printAllCharacters(String[] characterContainer, String[][] characterInformation) {
@@ -113,7 +112,6 @@ public class Methods {
     }
 
     // Method to make the code more efficient, checking features by taking the option representing the index and filter string
-    // Method to make the code more efficient, checking features by taking the option representing the index and filter string
     static void filterBasics(Tree tree, String[] characterContainer, int feature, String filter) {
         System.out.println("\n== Printing Characters ==\n" + header);
 
@@ -130,6 +128,7 @@ public class Methods {
 
     // Method to filter characters
     static void filter(Scanner scn, String input, Tree tree, String[] characterContainer) {
+
         switch(input.toUpperCase()) {
             // Filter characters by alphabet entered
             case "A":
@@ -184,7 +183,7 @@ public class Methods {
                 break;
         }
     }
-    // Method to sort characters
+
     // Sorting basic Method, where the feature indicates what index of the character information will be checked, and the elements representing the order of printing
     static void sortBasic(String[] characters, String[][] characterInfo, String[] elements, int feature){
 
@@ -208,13 +207,11 @@ public class Methods {
     static void sortCharacters(String sort, String[] characters, String[][] characterInfo){
 
         switch (sort.toUpperCase()){
-
             // Sorting by alphabet will be the same as printing the characters
             case "A":
                 System.out.println(" ");
                 printAllCharacters(characters, characterInfo);
                 break;
-
 
             case "B":
                 String[] rarity = {"4 Star", "5 Star"}; // Order of Printing
