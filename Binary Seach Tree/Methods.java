@@ -115,38 +115,40 @@ public class Methods {
     }
 
     // Method to make the code more efficient, checking features by taking the option representing the index and filter string
-    static void filterBasics(String[] characterContainer, String[][] characterInformation, int feature, String filter){
-
+    // Method to make the code more efficient, checking features by taking the option representing the index and filter string
+    static void filterBasics(Tree tree, String[] characterContainer, int feature, String filter) {
         System.out.println("\n== Printing Characters ==\n" + header);
 
         int j = 0;
-        // For loop to check through the index of the arrays inside the character information array corresponding to the feature it is filtering by. If it is equivalent, will print the character information
-        for (int i = 0; i < characterContainer.length; i++) {
-            if (characterInformation[i][feature].equalsIgnoreCase(filter) || characterInformation[i][feature].replace(" ", "").equalsIgnoreCase(filter)) {
-                printCharacterInfo(characterContainer[i], characterInformation[i], j); // Prints Info
+        // For loop to check through the characterContainer array and fetch the corresponding information from the tree
+        for (String character : characterContainer) {
+            String[] info = tree.get(tree.normalizeKey(character));
+            if (info != null && (info[feature].equalsIgnoreCase(filter) || info[feature].replace(" ", "").equalsIgnoreCase(filter))) {
+                printCharacterInfo(character, info, j); // Prints Info
                 j += 1;
             }
         }
     }
+
     // Method to filter characters
-    static void filter(Scanner scn, String input, String[] characterContainer, String[][] characterInformation){
-
+    static void filter(Scanner scn, String input, Tree tree, String[] characterContainer) {
         switch(input.toUpperCase()) {
-
             // Filter characters by alphabet entered
             case "A":
                 System.out.print("Please enter an alphabet to filter by: ");
-
                 // To check if the input is one of the alphabets
                 String alphabet = checkInput(scn, new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"});
                 System.out.println("\n" + header);
 
                 int i = 0;
                 // Checks if the alphabet of each character is the same with the input entered, if it is the same, will display the character information
-                for (String s : characterContainer){
-                    if (String.valueOf(s.charAt(0)).equalsIgnoreCase(alphabet)){
-                        printCharacterInfo(s, characterInformation[Arrays.asList(characterContainer).indexOf(s)], i); // Finds the index of the character name, and puts the character information array as an input to the method
-                        i += 1;
+                for (String s : characterContainer) {
+                    if (String.valueOf(s.charAt(0)).equalsIgnoreCase(alphabet)) {
+                        String[] info = tree.get(tree.normalizeKey(s));
+                        if (info != null) {
+                            printCharacterInfo(s, info, i); // Finds the index of the character name, and puts the character information array as an input to the method
+                            i += 1;
+                        }
                     }
                 }
                 break;
@@ -156,8 +158,7 @@ public class Methods {
                 System.out.print("Please enter an element to filter by (Fire, Ice, Lightning, Physical, Wind, Quantum, Imaginary, Adaptive): ");
                 String element = checkInput(scn, new String[]{"Fire", "Ice", "Lightning", "Physical", "Wind", "Quantum", "Imaginary", "Adaptive"}); // Ensures that the element entered is valid
 
-                filterBasics(characterContainer, characterInformation, 2, element);
-
+                filterBasics(tree, characterContainer, 2, element);
                 break;
 
             // Filters by the path
@@ -165,7 +166,7 @@ public class Methods {
                 System.out.print("Please enter a path to filter by (Nihility, Erudition, Destruction, Harmony, The Hunt, Preservation, Abundance, Adaptive): ");
                 String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "The Hunt", "Preservation", "Abundance", "Adaptive"}); // Ensure input is valid
 
-                filterBasics(characterContainer, characterInformation, 1, path);
+                filterBasics(tree, characterContainer, 1, path);
                 break;
 
             // Filters by the faction
@@ -173,7 +174,7 @@ public class Methods {
                 System.out.print("Please enter a faction to filter by (Herta Space Station, IPC, The Xianzhou Loufu, Stellaron Hunter, Belobog, Astral Express, Intelligentsia Guild, Penacony, Masked Fools): ");
                 String faction = checkInput(scn, new String[]{"HertaSpaceStation", "IPC", "TheXianzhouLoufu", "StellaronHunter", "Belobog", "AstralExpress", "IntelligentsiaGuild", "Penacony", "MaskedFools"});
 
-                filterBasics(characterContainer, characterInformation, 3, faction);
+                filterBasics(tree, characterContainer, 3, faction);
                 break;
 
             // Filters by Rarity
@@ -181,7 +182,7 @@ public class Methods {
                 System.out.print("Please enter a rarity to filter by (4 Star, 5 Star): ");
                 String rarity = checkInput(scn, new String[]{"4Star", "5Star"}); // Ensure Input is valid
 
-                filterBasics(characterContainer, characterInformation, 0, rarity);
+                filterBasics(tree, characterContainer, 0, rarity);
                 break;
         }
     }
@@ -203,7 +204,6 @@ public class Methods {
                 }
             }
         }
-
     }
 
     // Method that uses the sort basics method, changing the feature and the array of order
