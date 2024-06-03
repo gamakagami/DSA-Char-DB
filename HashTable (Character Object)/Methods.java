@@ -53,6 +53,7 @@ public class Methods {
     }
 
 
+    // Method to print all character information from the hashtable
     static void printCharacterInfo(Hashtable<String, Character> hashtable) {
         for (String key : hashtable.keySet()) {
             Character character = hashtable.get(key);
@@ -60,6 +61,7 @@ public class Methods {
         }
     }
 
+    // Method to ask the user if they want to continue the program
     static boolean proceed() {
         System.out.println("\n Would you like to Continue? (Y/N): ");
         Scanner scn = new Scanner(System.in);
@@ -73,6 +75,7 @@ public class Methods {
         return continueTheProgram;
     }
 
+    // Method to check and validate user input against a list of valid options
     static String checkInput(Scanner scn, String[] target) {
         boolean action_present = false;
         String action = "";
@@ -80,7 +83,7 @@ public class Methods {
         while (!action_present) {
             action = scn.nextLine();
             for (String targetInput : target) {
-                action = action.replace(",", "");
+                action = action.replace(",", ""); // Remove commas
                 if (action.equalsIgnoreCase(targetInput)) {
                     action_present = true;
                     break;
@@ -94,6 +97,7 @@ public class Methods {
         return action;
     }
 
+    // Method to filter characters based on user input criteria
     static void filter(Scanner scn, String input, Hashtable<String, Character> container) {
         switch (input.toUpperCase()) {
             case "A":
@@ -106,7 +110,6 @@ public class Methods {
                         .sorted(Comparator.comparing(Character::getName))
                         .forEach(Methods::printCharacterDetails);
                 break;
-
 
             case "B":
                 System.out.print("Please enter an element to filter by (Fire, Ice, Lightning, Physical, Wind, Quantum, Imaginary, Adaptive): ");
@@ -139,7 +142,7 @@ public class Methods {
                 break;
 
             case "E":
-                System.out.print("Please enter a rarity to filter by (4 Star, 5 Star): "); //filter 
+                System.out.print("Please enter a rarity to filter by (4 Star, 5 Star): ");
                 String rarity = checkInput(scn, new String[]{"4 Star", "5 Star"});
 
                 container.values().stream()
@@ -149,7 +152,6 @@ public class Methods {
                 break;
         }
     }
-
     static void printCharacterDetails(Character character) {
         System.out.println(character.name + ", " + character.rarity + ", " + character.path + ", " + character.element + ", " + character.faction);
     }
@@ -157,7 +159,7 @@ public class Methods {
     static void sortCharacters(String sort, Hashtable<String, Character> character) {
         switch (sort.toUpperCase()) {
             case "A":
-                System.out.println("\n== Printing Characters in Alphabetical Order ==\n"); // sort by Alphabet
+                System.out.println("\n== Printing Characters in Alphabetical Order ==\n");
                 character.keySet().stream()
                         .sorted()
                         .map(character::get) // Get the character object based on the key
@@ -167,7 +169,7 @@ public class Methods {
             case "B":
                 System.out.println("\n== Print Characters by Rarity ==\n");
                 character.values().stream()
-                        .sorted(Comparator.comparing(Character::getRarity))// Sort by Rarity
+                        .sorted(Comparator.comparing(Character::getRarity))
                         .forEach(Character -> {
                             Methods.printCharacterDetails(Character);
                             System.out.println(); // Add a line break after each character's details
@@ -176,7 +178,7 @@ public class Methods {
             case "C":
                 System.out.println("\n== Printing Characters by Path ==\n");
                 character.values().stream()
-                        .sorted(Comparator.comparing(Character::getPath))// Sort by path
+                        .sorted(Comparator.comparing(Character::getPath))
                         .forEach(Character -> {
                             Methods.printCharacterDetails(Character);
                             System.out.println(); // Add a line break after each character's details
@@ -185,7 +187,7 @@ public class Methods {
             case "D":
                 System.out.println("\n== Printing Characters by Element ==\n");
                 character.values().stream()
-                        .sorted(Comparator.comparing(Character::getElement)) // Sort by Element
+                        .sorted(Comparator.comparing(Character::getElement))
                         .forEach(Character -> {
                             Methods.printCharacterDetails(Character);
                             System.out.println(); // Add a line break after each character's details
@@ -194,7 +196,7 @@ public class Methods {
             case "E":
                 System.out.println("\n== Printing Characters by Faction ==\n");
                 character.values().stream()
-                        .sorted(Comparator.comparing(Character::getFaction).thenComparing(Character::getName)) // Sort by faction
+                        .sorted(Comparator.comparing(Character::getFaction).thenComparing(Character::getName)) // Sort by faction, then by name
                         .forEach(Character -> {
                             Methods.printCharacterDetails(Character);
                             System.out.println(); // Add a line break after each character's details
@@ -203,6 +205,7 @@ public class Methods {
         }
     }
 }
+
 
 
 
