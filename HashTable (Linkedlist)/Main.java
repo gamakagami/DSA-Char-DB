@@ -11,7 +11,7 @@ public class Main extends Methods {
         Character chars = new Character();
 
         // Create a hashtable to retrieve information
-        Hashtable<String, LinkedList<String>> Retrieve_Information = new Hashtable<>(48);
+        Hashtable<String, LinkedList<String>> Retrieve_Information = new Hashtable<>();
 
         // Populate the hashtable using the LinkedLists
         for (int i = 0; i < chars.characterContainer.size(); i++) {
