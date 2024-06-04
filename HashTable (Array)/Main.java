@@ -11,7 +11,7 @@ public class Main extends Methods {
         Character chars = new Character();
 
         // Initializing the hashtable and adding elements (Name : Array of Information)
-        Retrieve_Information = new Hashtable<>(48);
+        Retrieve_Information = new Hashtable<>();
         for (int i = 0; i < chars.characterContainer.length; i++) {
             Retrieve_Information.put(chars.characterContainer[i], chars.characterInformation[i]);
         }
