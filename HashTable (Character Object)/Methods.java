@@ -6,6 +6,8 @@ import java.util.Comparator;
 public class Methods {
     static String header = "Character:            Rarity:               Path:                 Element:              Faction:\n";
     static void getInfo(String character, Hashtable<String, Character> information, Integer option) {
+
+        // Make the character name equivalent to the format the hashtable keys have
         character = character.substring(0, 1).toUpperCase() + character.substring(1).toLowerCase();
 
         Character character1 = information.get(character);
@@ -16,12 +18,18 @@ public class Methods {
         }
 
         switch (option) {
+
+            // Prints character's rarity
             case 0:
                 System.out.println(character1.name + " is a " + character1.rarity + " character.");
                 break;
+
+            // Prints character's path
             case 1:
                 System.out.println(character1.name + " is a " + character1.path + " path character.");
                 break;
+
+            // Prints character's element
             case 2:
                 System.out.println(character1.name + "'s element is " + character1.element + ".");
                 break;
@@ -35,6 +43,7 @@ public class Methods {
 
         System.out.println("Please Enter a Character Name: ");
 
+        // Ensures that the character is present in the database
         while (!present) {
             Char = scn.nextLine();
             Char = Char.replace(" ", "");
@@ -152,6 +161,8 @@ public class Methods {
                 break;
         }
     }
+
+    // Method that prints the character information
     static void printCharacterDetails(Character character) {
         System.out.println(character.name + ", " + character.rarity + ", " + character.path + ", " + character.element + ", " + character.faction);
     }
@@ -205,7 +216,3 @@ public class Methods {
         }
     }
 }
-
-
-
-
