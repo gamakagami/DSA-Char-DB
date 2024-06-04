@@ -3,7 +3,7 @@ import java.util.*;
 public class Main extends Methods {
 
     public static void main(String[] args) {
-        Hashtable<String, Character> Retrieve_Information = new Hashtable<>(48); //information 
+        Hashtable<String, Character> Retrieve_Information = new Hashtable<>(); //information 
         Retrieve_Information.put("Acheron", new Character("Acheron", "5 Star", "Nihility", "Lightning", "Self Annihilator"));
         Retrieve_Information.put("Argenti", new Character("Argenti", "5 Star", "Erudition", "Physical", "Knights of Beauty"));
         Retrieve_Information.put("Arlan", new Character("Arlan", "4 Star", "Destruction", "Lightning", "Herta Space Station"));
