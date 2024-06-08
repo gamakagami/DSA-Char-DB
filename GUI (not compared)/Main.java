@@ -28,7 +28,7 @@ public class Main extends Methods {
         boolean loop = true; // If the loop becomes false, the program will stop (Determined by he method proceed)
 
         while (loop) {
-            String action = JOptionPane.showInputDialog("\n== Welcome to a Honkai Star Rail Database System ==\n== List Of Actions ==\n- A: Get Rarity\n- B: Get Path\n- C: Get Element\n- D: Print all Characters\n- E: Filter Characters\n- F: Display Information of a Chracter\n- G: Sort Characters\n- Q: Quit\n\nPlease enter an action you want to perform: ");
+            String action = JOptionPane.showInputDialog("\n== Welcome to a Honkai Star Rail Database System ==\n== List Of Actions ==\n- A: Get Rarity\n- B: Get Path\n- C: Get Element\n- D: Print all Characters\n- E: Filter Characters\n- F: Display Information of a Character\n- G: Sort Characters\n- Q: Quit\n\nPlease enter an action you want to perform: ");
 
             action = checkInput(new String[]{"A", "B", "C", "D", "E", "F", "G", "Q"}, action); // To ensure user input is valid
 
