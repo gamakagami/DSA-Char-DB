@@ -137,10 +137,12 @@ public class Methods{
 
             String data = Container.get(characterContainer[i])[feature]; // Represents the feature of the character
             if (data.equalsIgnoreCase(filter) || data.replace(" ", "").equalsIgnoreCase(filter)) {
-                printCharacterInfo(characterContainer[i], Container.get(characterContainer[i]), j, print); // Prints Info
+                print = printCharacterInfo(characterContainer[i], Container.get(characterContainer[i]), j, print); // Prints Info
                 j += 1;
             }
         }
+
+        JOptionPane.showMessageDialog(null, print);
     }
 
     // Method that filters based on the input taken, taking in the Hashtable
