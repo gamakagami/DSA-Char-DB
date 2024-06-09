@@ -9,7 +9,7 @@ public class Methods{
     // Used to get the rarity, path, and the element of a character
     static void getInfo(String Character, Hashtable<String, LinkedList<String>> Information, Integer Option) {
 
-        Character = Character.replace(" ", "");
+        Character = Character.replace(" ", ""); // To ensure no errors is caused by space
         Character = Character.substring(0, 1).toUpperCase() + Character.substring(1).toLowerCase(); // To make the first letter capitalized and the rest to be lowercase, so it will match the hashtable keys
         LinkedList<String> Info = Information.get(Character); // Receives the array of information regarding the character
 
@@ -44,6 +44,7 @@ public class Methods{
 
         System.out.println(header);
 
+        // Goes through all the characters
         for (int i = 0; i < Container.size(); i++) {
             printCharacterInfo(characterContainer.get(i), Container.get(characterContainer.get(i)), i); // Prints Character Information
         }
@@ -57,7 +58,7 @@ public class Methods{
         System.out.print(no + 1 + ". " + character);
         int nameLength = (character + String.valueOf(no + 1) + ". ").length();
         for (int j = nameLength; j < 22; j++) { // Prints " " 20 - name length amount of times
-            System.out.print(" ");
+            System.out.print(" "); // Prints space
         }
 
         // Uses a as the index for the information array
@@ -80,7 +81,7 @@ public class Methods{
         Scanner scn = new Scanner(System.in);
         boolean continueTheProgram = false;
 
-        String input = checkInput(scn, new String[]{"Y", "N"});
+        String input = checkInput(scn, new String[]{"Y", "N"}); // Ensure input is valid
 
         // Will print if the user chooses to exit the program
         if (input.equalsIgnoreCase("N")){
@@ -103,6 +104,7 @@ public class Methods{
             for (String targetInput : target) {
 
                 String actions = action.replace(" ", "");
+                // To ensure that spaces wont cause an error
                 if (action.equalsIgnoreCase(targetInput) || actions.equalsIgnoreCase(targetInput)) {
                     action_present = true; // Stopping the loop
                     break;
@@ -126,7 +128,7 @@ public class Methods{
         for (int i = 0; i < Container.size(); i++) {
 
             String data = Container.get(characterContainer.get(i)).get(feature); // Represents the feature of the character
-            if (data.equalsIgnoreCase(filter) || data.replace(" ", "").equalsIgnoreCase(filter)) {
+            if (data.equalsIgnoreCase(filter) || data.replace(" ", "").equalsIgnoreCase(filter)) { // Ensures spaces wont cause an error
                 printCharacterInfo(characterContainer.get(i), Container.get(characterContainer.get(i)), j); // Prints Info
                 j += 1;
             }
@@ -161,7 +163,7 @@ public class Methods{
                 System.out.print("Please enter an element to filter by (Fire, Ice, Lightning, Physical, Wind, Quantum, Imaginary, Adaptive): ");
                 String element = checkInput(scn, new String[]{"Fire", "Ice", "Lightning", "Physical", "Wind", "Quantum", "Imaginary", "Adaptive"}); // Ensures that the element entered is valid
 
-                filterBasics(Container, 2, element, characterContainer);
+                filterBasics(Container, 2, element, characterContainer); // Filters the characters
 
                 break;
 
@@ -170,7 +172,7 @@ public class Methods{
                 System.out.print("Please enter a path to filter by (Nihility, Erudition, Destruction, Harmony, The Hunt, Preservation, Abundance, Adaptive): ");
                 String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "TheHunt", "Preservation", "Abundance", "Adaptive"}); // Ensure input is valid
 
-                filterBasics(Container, 1, path, characterContainer);
+                filterBasics(Container, 1, path, characterContainer); // Filters the characters
                 break;
 
             // Filters by the faction
@@ -178,7 +180,7 @@ public class Methods{
                 System.out.print("Please enter a faction to filter by (Herta Space Station, IPC, The Xianzhou Loufu, Stellaron Hunter, Belobog, Astral Express, Intelligentsia Guild, Penacony, Masked Fools): ");
                 String faction = checkInput(scn, new String[]{"HertaSpaceStation", "IPC", "TheXianzhouLoufu", "StellaronHunter", "Belobog", "AstralExpress", "IntelligentsiaGuild", "Penacony", "MaskedFools"});
 
-                filterBasics(Container, 3, faction, characterContainer);
+                filterBasics(Container, 3, faction, characterContainer); // Filters the characters
                 break;
 
             // Filters by Rarity
@@ -186,7 +188,7 @@ public class Methods{
                 System.out.print("Please enter a rarity to filter by (4 Star, 5 Star): ");
                 String rarity = checkInput(scn, new String[]{"4Star", "5Star"}); // Ensure Input is valid
 
-                filterBasics(Container, 0, rarity, characterContainer);
+                filterBasics(Container, 0, rarity, characterContainer); // Filters the characters
                 break;
         }
     }
