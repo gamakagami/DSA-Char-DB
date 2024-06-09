@@ -66,13 +66,13 @@ public class Main extends Methods {
 
             switch (action.toUpperCase()) {
                 case "A":
-                    String character = getCharacter(scn, Retrieve_Information); //rarity
+                    String character = getCharacter(scn, Retrieve_Information); //get character rarity
                     getInfo(character, Retrieve_Information, 0);
                     loop = proceed();
                     break;
 
                 case "B":
-                    character = getCharacter(scn, Retrieve_Information);//path
+                    character = getCharacter(scn, Retrieve_Information);//ger character path
                     getInfo(character, Retrieve_Information, 1);
                     loop = proceed();
                     break;
@@ -91,7 +91,7 @@ public class Main extends Methods {
                     loop = proceed();
                     break;
                 case "E":
-                    System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n"); //filters
+                    System.out.print("Filter Characters By: \nA: Alphabet\nB: Element\nC: Path\nD: Faction\nE: Rarity\n"); //filter for character
                     String filter = checkInput(scn, new String[]{"A", "B", "C", "D", "E"});
                     filter(scn, filter, Retrieve_Information);
                     loop = proceed();
@@ -112,7 +112,7 @@ public class Main extends Methods {
                     break;
 
                 case "G": 
-                    System.out.print("\n== Sort Characters Features ==\nA: Alphabet\nB: Rarity\nC: Path\nD: Element\nE: Faction\n"); //sort info
+                    System.out.print("\n== Sort Characters Features ==\nA: Alphabet\nB: Rarity\nC: Path\nD: Element\nE: Faction\n"); //sort character 
                     System.out.print("\nSort Characters By: ");
                     String sort = checkInput(scn, new String[]{"A", "B", "C", "D", "E"});
                     sortCharacters(sort, Retrieve_Information);
