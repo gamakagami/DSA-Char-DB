@@ -1,11 +1,10 @@
 <h1>Data Structure Final Project</h1>
 <br>
+<h2>Honkai Star Rail Character Database</h2>
 <h4>Members:</h4>
-<li>
   <ul>Albertus Santoso</ul>
   <ul>Gabriel Anderson</ul>
   <ul>Rafael Anderson</ul>
-</li>
 <h3>Description:</h3>
 <p>To solve the problem that can retrieve data the fastest and uses the least memory usage, we did some benchmarking to determine which data structure is best. We compare data structures (HashTable(Array), HashTable(Linkedlist), HashTable(Character Object), Binary Search Tree) and find their average time and space consumed when running.</p>
 
@@ -18,7 +17,7 @@ But for our database, where the amount of characters is 48 characters. The faste
 
 </p>
 <h4>PPT link:<a href="https://www.canva.com/design/DAGHC9JZWaY/P_amHeRb-x8__dbU8w9Eaw/edit
-">https://www.canva.com/design/DAGHC9JZWaY/P_amHeRb-x8__dbU8w9Eaw/edit
+"> https://www.canva.com/design/DAGHC9JZWaY/P_amHeRb-x8__dbU8w9Eaw/edit
 </a></h4>
 
 Kuru - Kuru~~~
