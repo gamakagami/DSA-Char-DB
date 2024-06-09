@@ -35,29 +35,29 @@ public class Main extends Methods {
 
                 // Getting Rarity
                 case "A":
-                    String character = getCharacter(scn, chars.characterContainer);
-                    getInfo(character, Retrieve_Information, 0);
-                    loop = proceed();
+                    String character = getCharacter(scn, chars.characterContainer); // Get valid character name
+                    getInfo(character, Retrieve_Information, 0); // 0 represents the index of rarity in the list
+                    loop = proceed(); // Asks if user wants to proceed or not
                     break;
 
                 // Getting Path
                 case "B":
                     character = getCharacter(scn, chars.characterContainer);
-                    getInfo(character, Retrieve_Information, 1);
+                    getInfo(character, Retrieve_Information, 1); // 1 represents the index of the path in the list
                     loop = proceed();
                     break;
 
                 // Getting Element
                 case "C":
                     character = getCharacter(scn, chars.characterContainer);
-                    getInfo(character, Retrieve_Information, 2);
+                    getInfo(character, Retrieve_Information, 2); // 2 represents the index of the element in the list
                     loop = proceed();
                     break;
 
                 // Printing all Characters
                 case "D":
                     System.out.println("\n== Printing Characters Information ==\n ");
-                    printAllCharacters(Retrieve_Information, chars.characterContainer);
+                    printAllCharacters(Retrieve_Information, chars.characterContainer); // Prints all characters along with their information
                     loop = proceed();
                     break;
 
@@ -66,16 +66,16 @@ public class Main extends Methods {
                     System.out.print("\n== Filter Characters By: ==\n- A: Alphabet\n- B: Element\n- C: Path\n- D: Faction\n- E: Rarity\n");
 
                     System.out.print("\nFilter Characters by: ");
-                    String filter = checkInput(scn, new String[]{"A","B","C","D","E"});
+                    String filter = checkInput(scn, new String[]{"A","B","C","D","E"}); // Ensure input is valid
 
-                    filter(scn, filter, Retrieve_Information, chars.characterContainer);
+                    filter(scn, filter, Retrieve_Information, chars.characterContainer); // Filters the caharacters
                     loop = proceed();
                     break;
 
                 // Displaying information of a character
                 case "F":
                     System.out.print("Enter a character name: ");
-                    String name = checkInput(scn, chars.characterContainer.toArray(new String[0]));
+                    String name = checkInput(scn, chars.characterContainer.toArray(new String[0])); // Ensures the character name is valid
 
                     for (int i = 0; i < chars.characterContainer.size(); i++){
 
@@ -94,8 +94,8 @@ public class Main extends Methods {
                 case "G":
                     System.out.print("\n== Sort Characters Features ==\nA: Alphabet\nB: Rarity\nC: Path\nD: Element\nE: Faction\n");
                     System.out.print("\nSort Characters By: ");
-                    String sort = checkInput(scn, new String[]{"A","B","C","D","E"});
-                    sortCharacters(sort, Retrieve_Information, chars.characterContainer);
+                    String sort = checkInput(scn, new String[]{"A","B","C","D","E"}); // Ensure input is valid
+                    sortCharacters(sort, Retrieve_Information, chars.characterContainer); // Sorts the characters
                     loop = proceed();
                     break;
 
@@ -103,7 +103,7 @@ public class Main extends Methods {
                 // Quitting program
                 case "Q":
                     System.out.println("Quitting program..");
-                    loop = false;
+                    loop = false; // Stops the program
                     break;
             }
         }
