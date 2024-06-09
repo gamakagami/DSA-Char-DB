@@ -8,7 +8,7 @@
 <h2>Description:</h2>
 <p>To solve the problem that can retrieve data the fastest and uses the least memory usage, we did some benchmarking to determine which data structure is best. We compare data structures (HashTable(Array), HashTable(Linkedlist), HashTable(Character Object), Binary Search Tree) and find their average time and space consumed when running.</p>
 
-<h3>Result:</h3>
+<h2>Result:</h2>
 <p>For a small amount of data like 12, hash tables with arrays are the fastest, with the binary search trees coming in second. In addition to that, the hash table with arrays significantly occupies less space than other data structures.
 
 However, for a larger quantity of data like 192, binary search trees are significantly faster than other data structures. But for the space occupied, character object comes in first, whereas arrays come in second.
