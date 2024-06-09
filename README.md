@@ -5,7 +5,7 @@
   <ul>Albertus Santoso</ul>
   <ul>Gabriel Anderson</ul>
   <ul>Rafael Anderson</ul>
-<h3>Description:</h3>
+<h2>Description:</h2>
 <p>To solve the problem that can retrieve data the fastest and uses the least memory usage, we did some benchmarking to determine which data structure is best. We compare data structures (HashTable(Array), HashTable(Linkedlist), HashTable(Character Object), Binary Search Tree) and find their average time and space consumed when running.</p>
 
 <h3>Result:</h3>
