@@ -8,7 +8,7 @@ public class Main extends Methods {
 
     public static void main(String[] args) {
 
-        Character chars = new Character();
+        Character chars = new Character(); // To access the data structures used to store the characters along with their information
 
         // Create a hashtable to retrieve information
         Hashtable<String, LinkedList<String>> Retrieve_Information = new Hashtable<>();
