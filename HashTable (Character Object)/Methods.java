@@ -109,7 +109,7 @@ public class Methods {
     // Method to filter characters based on user input criteria
     static void filter(Scanner scn, String input, Hashtable<String, Character> container) {
         switch (input.toUpperCase()) {
-            case "A":
+            case "A": // filter by alphabet
                 System.out.print("Please enter an alphabet to filter by: ");
                 String alphabet = scn.nextLine().trim().substring(0, 1).toUpperCase();
                 System.out.println("\n");
@@ -120,7 +120,7 @@ public class Methods {
                         .forEach(Methods::printCharacterDetails);
                 break;
 
-            case "B":
+            case "B": //filter by element
                 System.out.print("Please enter an element to filter by (Fire, Ice, Lightning, Physical, Wind, Quantum, Imaginary, Adaptive): ");
                 String element = checkInput(scn, new String[]{"Fire", "Ice", "Lightning", "Physical", "Wind", "Quantum", "Imaginary", "Adaptive"});
 
@@ -130,7 +130,7 @@ public class Methods {
                         .forEach(Methods::printCharacterDetails);
                 break;
 
-            case "C":
+            case "C": //filter by path
                 System.out.print("Please enter a path to filter by (Nihility, Erudition, Destruction, Harmony, The Hunt, Preservation, Abundance, Adaptive): ");
                 String path = checkInput(scn, new String[]{"Nihility", "Erudition", "Destruction", "Harmony", "The Hunt", "Preservation", "Abundance", "Adaptive"});
 
@@ -140,7 +140,7 @@ public class Methods {
                         .forEach(Methods::printCharacterDetails);
                 break;
 
-            case "D":
+            case "D": //filter by faction
                 System.out.print("Please enter a faction to filter by (Herta Space Station, IPC, The Xianzhou Loufu, Stellaron Hunter, Belobog, Astral Express, Intelligentsia Guild, Penacony, Masked Fools): ");
                 String faction = checkInput(scn, new String[]{"Herta Space Station", "IPC", "The Xianzhou Loufu", "Stellaron Hunter", "Belobog", "Astral Express", "Intelligentsia Guild", "Penacony", "Masked Fools"});
 
@@ -150,7 +150,7 @@ public class Methods {
                         .forEach(Methods::printCharacterDetails);
                 break;
 
-            case "E":
+            case "E": //filter by rarity
                 System.out.print("Please enter a rarity to filter by (4 Star, 5 Star): ");
                 String rarity = checkInput(scn, new String[]{"4 Star", "5 Star"});
 
@@ -169,7 +169,7 @@ public class Methods {
 
     static void sortCharacters(String sort, Hashtable<String, Character> character) {
         switch (sort.toUpperCase()) {
-            case "A":
+            case "A": //sort by Alphabetical order
                 System.out.println("\n== Printing Characters in Alphabetical Order ==\n");
                 character.keySet().stream()
                         .sorted()
@@ -177,7 +177,7 @@ public class Methods {
                         .forEach(Methods::printCharacterDetails); // Print the details of each character
                 break;
 
-            case "B":
+            case "B"://sort by rarity
                 System.out.println("\n== Print Characters by Rarity ==\n");
                 character.values().stream()
                         .sorted(Comparator.comparing(Character::getRarity))
@@ -186,7 +186,7 @@ public class Methods {
                             System.out.println(); // Add a line break after each character's details
                         });
                 break;
-            case "C":
+            case "C": //sort by path
                 System.out.println("\n== Printing Characters by Path ==\n");
                 character.values().stream()
                         .sorted(Comparator.comparing(Character::getPath))
@@ -195,7 +195,7 @@ public class Methods {
                             System.out.println(); // Add a line break after each character's details
                         });
                 break;
-            case "D":
+            case "D"://sort by element
                 System.out.println("\n== Printing Characters by Element ==\n");
                 character.values().stream()
                         .sorted(Comparator.comparing(Character::getElement))
@@ -204,7 +204,7 @@ public class Methods {
                             System.out.println(); // Add a line break after each character's details
                         });
                 break;
-            case "E":
+            case "E": //sort by faction
                 System.out.println("\n== Printing Characters by Faction ==\n");
                 character.values().stream()
                         .sorted(Comparator.comparing(Character::getFaction).thenComparing(Character::getName)) // Sort by faction, then by name
