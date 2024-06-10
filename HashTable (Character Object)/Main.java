@@ -72,19 +72,19 @@ public class Main extends Methods {
                     break;
 
                 case "B":
-                    character = getCharacter(scn, Retrieve_Information);//ger character path
+                    character = getCharacter(scn, Retrieve_Information);//get character path
                     getInfo(character, Retrieve_Information, 1);
                     loop = proceed();
                     break;
 
                 case "C":
-                    character = getCharacter(scn, Retrieve_Information);//element
+                    character = getCharacter(scn, Retrieve_Information);//get character element
                     getInfo(character, Retrieve_Information, 2);
                     loop = proceed();
                     break;
 
                 case "D":
-                    System.out.println("|| Printing Characters Information ||\n "); //print all information
+                    System.out.println("|| Printing Characters Information ||\n "); //print all character information
                     Retrieve_Information.values().stream()
                             .sorted(Comparator.comparing(Character::getName))
                             .forEach(Methods::printCharacterDetails);
